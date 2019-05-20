@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}Introducci\IeC {\'o}}{1}{section.1}
+\contentsline {section}{\numberline {2}Caractar\IeC {\'\i }stiques de la xarxa}{1}{section.2}
+\contentsline {subsection}{\numberline {2.1}Tipus d'adre\IeC {\c c}ament a la capa de xarxa}{1}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Adre\IeC {\c c}a de xarxa}{1}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Adre\IeC {\c c}a de broadcast}{1}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Porta d'enlla\IeC {\c c}}{1}{subsection.2.4}
+\contentsline {section}{\numberline {3}An\IeC {\`a}lisi de nivell de enlla\IeC {\c c} i xarxa}{1}{section.3}
+\contentsline {subsection}{\numberline {3.1}Protocols encapsulats en les trames de nivell 2}{1}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Ethernet II}{2}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}IEEE 802.3 Ethernet}{2}{subsubsection.3.1.2}
+\contentsline {subsection}{\numberline {3.2}Protocols encapsulats en trames de nivell 2}{2}{subsection.3.2}
+\contentsline {section}{\numberline {4}An\IeC {\`a}lisi nivell de transport}{3}{section.4}
+\contentsline {section}{\numberline {5}Conclusions}{3}{section.5}

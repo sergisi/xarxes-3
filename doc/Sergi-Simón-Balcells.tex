@@ -1,0 +1,197 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[simplified]{pgf-umlcd}
+\usepackage{tikz}
+\usepackage{multirow}
+\usepackage{float}
+\usetikzlibrary{positioning,fit,calc,arrows.meta, shapes}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\graphicspath{ {images/} }
+
+%Tot això hauria d'anar en un pkg, però no sé com és fa
+\newcommand*{\assignatura}[1]{\gdef\1assignatura{#1}}
+\newcommand*{\grup}[1]{\gdef\3grup{#1}}
+\newcommand*{\professorat}[1]{\gdef\4professorat{#1}}
+\renewcommand{\tablename}{Taula}
+\renewcommand{\title}[1]{\gdef\5title{#1}}
+\renewcommand{\author}[1]{\gdef\6author{#1}}
+\renewcommand{\date}[1]{\gdef\7date{#1}}
+\renewcommand{\contentsname}{Índex}
+\renewcommand{\listfigurename}{Llista d'imatges}
+\renewcommand{\listtablename}{Llista de Taules}
+\renewcommand{\maketitle}{ %fa el maketitle de nou
+    \begin{titlepage}
+        \raggedright{UNIVERSITAT DE LLEIDA \\
+            Escola Politècnica Superior \\
+            Grau en Enginyeria Informàtica\\
+            \1assignatura\\}
+            \vspace{5cm}
+            \centering\huge{\5title \\}
+            \vspace{3cm}
+            \large{\6author} \\
+            \normalsize{\3grup}
+            \vfill
+            Professorat : \4professorat \\
+            Data : \7date
+\end{titlepage}}
+%Emplenar a partir d'aquí per a fer el títol : no se com es fa el package
+%S'han de renombrar totes, inclús date, si un camp es deixa en blanc no apareix
+
+\tikzset{
+	%Style of nodes. Si poses aquí un estil es pot reutilitzar més facilment
+	base/.style = {circle, draw=black,
+      minimum width=0.75cm, font=\ttfamily,
+      text centered},
+    dots/.style = {circle, draw=white,
+      minimum width=0.75cm, font=\ttfamily,
+      text centered},
+    last/.style = {base, fill=orange!15},
+    remove/.style = {base, fill=red!15},
+    change/.style = {base, fill=green!15},Xarxes
+    tree/.style = {base, rectangle, minimum height=0.75cm},
+    stack/.style = {rectangle, font=\ttfamily, rounded corners, draw=black,
+      minimum width=4cm, minimum height=1cm,
+      text centered},
+   	even/.style = {stack, fill=green!30},
+   	odd/.style = {stack, fill=orange!15},
+   	blank/.style = {stack, minimum height=0.5cm, draw=white},
+   	typetag/.style={rectangle, draw=black!50, font=\ttfamily, anchor=west}
+}
+\renewcommand{\figurename}{Figura}
+\title{Anàlisi de la xarxa mitjançant l'analitzador de protocols de xarxa Wireshark}
+\author{Sergi Simón Balcells\\21040111X}
+\date{Diumenge 19 de Maig}
+\assignatura{XARXES}
+\professorat{E. Guitart, C. Mateu}
+\grup{GM3}
+
+%Comença el document
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+\pagenumbering{roman}
+\tableofcontents
+\listoffigures
+\listoftables
+\newpage
+\pagenumbering{arabic}
+\section{Introducció}
+\section{Caractarístiques de la xarxa}
+% Anàlisi paquest agafar característiques
+\subsection{Tipus d'adreçament a la capa de xarxa}
+Per a trobar el tipus d'adreçament a la xarxa, s'ha mirat els paquets
+tipus ARP per a observar diferents direccions IP de la xarxa.\\
+\\
+Observant les diferents direccions que es mouen dins de la xarxa, podem
+extreure que les direccions de la xarxa són 172.16.x.x, sent les x valors
+entre 0 i 255, és a dir, l'adreça de xarxa és 172.16.0.0/16 i per tant
+és de  \textbf{classe B}.
+\subsection{Adreça de xarxa}
+Com s'ha extret en l'anterior secció, la adreça de xarxa és 172.16.0.0.
+\subsection{Adreça de broadcast}
+Sabent l'adreça de xarxa, podem concloure que
+l'adreça de broadcast és 172.16.255.255, ja que aquesta és l'última adreça
+disponible de tota la xarxa, és a dir, la part del host de l'adreça a valor
+actiu a tots els bits. Inclús amb aquesta informació, per confirmar que no
+hi hagi hagut cap error, s'ha procedit a mirar l'adreça de broadcast en els
+paquets tipus:\\
+\begin{lstlisting}
+	    !arp && eth.dst == ff:ff:ff:ff:ff:ff
+\end{lstlisting}
+Els paquets d'aquest tipus mostren com a direcció IP 172.16.255.255 per destí,
+es pot confirmar la informació extreta en aquest apartat.
+\subsection{Porta d'enllaç}
+S'ha vist en la xarxa que s'empra el protocol DHCP, pel que, primerament
+es busca aquels paquests que siguin DHCP ACK:\\
+\begin{lstlisting}
+		bootp.option.dhcp == 5
+\end{lstlisting}
+En aquest protocol i en aquest tipus de paquet, es pot trobar la informàció
+referent al router,  dins de Bootstrap Protocol (ACK), en opcions de router.
+En aquest camp s'especifíca que l'adreça és 172.16.20.1.
+\section{Anàlisi de nivell de enllaç i xarxa}
+\subsection{Protocols encapsulats en les trames de nivell 2}
+Al llarg de tota la trama, es poden veure 2 protocols de nivell 2 de
+xarxa, \textbf{Ethernet II} i \textbf{IEEE 802.3 Ethernet}. En les següents
+subseccions s'explicarà el tipus d'encapsulament d'aquests
+\subsubsection{Ethernet II}
+Aquest tipus de trama s'utilitza en l'àmbit general, i es pot trobar en la majoria
+de paquets de la captura. La seva estructura segueix la següent:\\
+% Taula amb l'estructura
+\subsubsection{IEEE 802.3 Ethernet}
+Aquesta classe s'utilitza en els protocols de LLC. La seva estructuar és la
+següent:
+% Taula amb l'estructura
+\subsection{Protocols encapsulats en trames de nivell 2}
+Per a trobar els diferents protocols utilitzats, s'utilitza la eina de
+\textit{Protocol Hierarchy}, accessible dins del menú d'estadístiques del
+Wireshark. En aquest menú, podem veure com és divideix els protocols segons els
+nivells, començant pel nivell físic, i seguint amb Ethernet. Dins d'aquest menú
+es pot veure els següents tipus de paquets, que són: Logical-Link Control (LLC),
+Internetwork Packet eXchange (IPX), Internet Protocol Version 6 (IPv6),
+Internet Protocol Version 4 (IPv4), Address Resolution Protocol (ARP), que
+s'explicaran a continuació, juntament amb el seu valor de tipus.\\
+\begin{itemize}
+\item ARP, amb valor 0x0806, s'encarrega de resoldre i mantenir de manera automàtoca
+la taula d'equivalències entre les adreces MAC i les adreces IP dels nodes o màquines
+que es comuniquen.
+\item IPv4, amb valor 0x0800, és el protocol per excelència d'Internet. Serveix
+per a la identiciació i connexió de nodes.
+\item IPv6, amb valor 0x86dd, neix com a un protocol per a substituir IPv4, i
+treure els problemes que sorgeixen amb aquest, com és la falta d'adreces, seguretat i
+qualitat de servei. Moltes de les seves funcionalitats s'han portat enrere per al
+protocol de IPv4.
+\item IPX, amb valor 0x8137, s'utilitza per a transmetre datagrames entre els
+diferents serviors i els programes de les estacions de treball.
+\item LLC, sense valor donat que està encapsulat amb IEEE 802.3 Ethernet i aquest
+no te nombre reservat pel tipus, defineix la forma en què les dades són transferides
+sobre el medi físic, proporcionant servei a les capes superiors.
+\end{itemize}
+
+\section{Anàlisi nivell de transport}
+\section{Conclusions}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
