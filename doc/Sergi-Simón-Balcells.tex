@@ -11,6 +11,10 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 \graphicspath{ {images/} }
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 %Tot això hauria d'anar en un pkg, però no sé com és fa
 \newcommand*{\assignatura}[1]{\gdef\1assignatura{#1}}
@@ -155,12 +159,255 @@ no te nombre reservat pel tipus, defineix la forma en què les dades són transf
 sobre el medi físic, proporcionant servei a les capes superiors.
 \end{itemize}
 \subsection{Equips amb adreçament IPX i IPv4}
-Per aquesta secció, s'ha mirat manualment els equips que utilitzen IPX la seva adreça MAC,
-i, utilitzant aquesta s'ha mirat si hi havia un paquet que amb aquesta MAC utilitzes IPv4.\\
-En aquesta taula es mostra els resultats d'aquesta búsqueda:\\
+Per aquesta secció, s'ha mirat manualment els equips que utilitzen IPX 
+la seva adreça MAC, i, utilitzant aquesta valor s'ha mirat si hi havia un 
+paquet que amb aquesta MAC que utilitzes IPv4 amb la comanda, substituint
+l'adreça MAC per aquelles trobades amb l'anterior cerca:\\
+\begin{lstlisting}
+	(eth.src == 00:00:74:99:b5:0b || eth.dst == 00:00:74:99:b5:0b) && ip
+\end{lstlisting}
+En la primera cerca dins dels paquests IPX s'ha trobat aquestes adreces i MAC,
+com es mostra en la taula \ref{ipx:mac}
+\begin{table}[!h]
+\centering
+\begin{tabular}{|l|r|}
+\hline
+Adreces IPX &Adreces MAC\\
+\hline
+00000000.00007499b50b &00:00:74:99:b5:0b\\
+\hline
+00000000.000074aee28d &00:00:74:ae:e2:8d\\
+\hline
+00000000.000074b4dbcd &00:00:74:b4:db:cd\\
+\hline
+00000000.000074d5923f &00:00:74:d5:92:3f\\
+\hline
+00000000.000074da5833 &00:00:74:da:58:33\\
+\hline
+00000000.000074dab870 &00:00:74:da:b8:70\\
+\hline
+00000000.000074ddfd6c &00:00:74:dd:fd:6c\\
+\hline
+00000000.000074e03eaf &00:00:74:e0:3e:af\\
+\hline
+00000000.000074e04ef9 &00:00:74:e0:4e:f9\\
+\hline
+00000000.000074e08d60 &00:00:74:e0:8d:60\\
+\hline
+00000009.00080228befa &00:08:02:28:be:fa\\
+\hline
+\end{tabular}
+\caption{Adreces MAC i IPX d'equips que utilitzen IPX}
+\label{ipx:mac}
+\end{table}
+Finalment, buscant totes les MACS abans trobades i eliminant aquelles 
+files que no s'han trobat paquets d'IPv4 en la trama tenim la taula \ref{ipx:ipv4}.
 % Afegir taula script ipx.py
+\begin{table}[!h]
+\centering
+\begin{tabular}{ |c|c|c| }
+\hline
+Adreça MAC &Adreça IPX &Adreça IPv4\\
+\hline
+00000000.000074da5833 &00:00:74:da:58:33 &172.16.40.6\\
+\hline
+00000000.000074ddfd6c &00:00:74:dd:fd:6c &172.16.40.11\\
+\hline
+00000000.000074e04ef9 &00:00:74:e0:4e:f9 &172.16.40.4\\
+\hline
+00000000.000074e08d60 &00:00:74:e0:8d:60 &172.16.40.3\\
+\hline
+\end{tabular}
+\caption{Taula de adreces IPX que han utilitat protocol IPv4 i ha sigut captat.}
+\label{ipx:ipv4}
+\end{table}
+\subsection{Adreces IPv4 dels nodes que envien paquests IPv6 a ff02::1}
+En aquesta subsecció s'explicarà com s'ha trobat aquells equips que envien
+paquets d'IPv6 a tots els nodes de l'enllaç local, es a dir, a ff02::1.\\
+\\
+Per a dur a terme aquest propòsit, es mira quins paquets d'IPv6 tenen com
+a destí l'adreça ff02::1. Primarement es volia buscar les adreces MAC i veure
+si aquests utilitzaven algun protocol de xarxa IPv4, però aquest tipus de paquet
+està encapsulat dins de IPv4 dins d'UDP, per que en un sol pas s'ha trobat els
+5 nodes que fan aquest tipus de connexió, que es poden veure a la taula \ref{ipv6}.
+\begin{table}[!h]
+\centering
+\begin{tabular}{|l|r|}
+\hline
+Adreces IPv6 &Adreces IPv4\\
+\hline
+2001:0:9d38:6ab8:2470:3837:3e6f:f31d &172.16.103.254\\
+\hline
+2001:0:5ef5:79fb:2cfb:2fe0:3e6f:f31d &172.16.118.198\\
+\hline
+2001:0:9d38:6ab8:30ba:1553:3e6f:f31d &172.16.104.180\\
+\hline
+2001:0:9d38:6abd:2455:1c81:3e6f:f31d &172.16.105.251\\
+\hline
+2001:0:9d38:6ab8:496:259b:3e6f:f31d &172.16.121.59\\
+\hline
+\end{tabular}
+\caption{Taula d'adreces IPv6 i IPv4 d'un mateix node.}
+\label{ipv6}
+\end{table}
+\subsection{Adreces Multicast}
+Per a trobar les diferents adreces multicast s'ha utilitzat el filtre:
+\begin{lstlisting}
+	eth.dst[0] & 1 and !eth.dst == ff:ff:ff:ff:ff:ff
+\end{lstlisting}
+Ha donat el resultat de la taula \ref{mult}. S'ha extret les adreces del tipus
+ff02:1:ff00:0/104, donat que s'utiitza pel mateix protocol. Si es desitja, es pot
+veure a l'annex la resta de les dades, a la taula \ref{mult:104}
+\begin{table}[!h]
+\centering
+\begin{tabular}{|C{4cm}|C{4cm}|}
+\hline
+Adreces multicast &Protocols\\
+\hline
+03:00:00:00:00:01 &BROWSER\\
+\hline
+224.0.0.1 &BJNP, ICMP, IGMPv2\\
+\hline
+224.0.0.251 &IGMPv2, IPv4, MDNS\\
+\hline
+224.0.0.252 &LLMNR\\
+\hline
+ff02::1 &ICMPv6, IPv6\\
+\hline
+ff02::16 &ICMPv6\\
+\hline
+ff02::1:2 &DHCPv6\\
+\hline
+ff02::1:3 &LLMNR\\
+\hline
+ff02::1:ff00:0/104 &ICMPv6\\
+\hline
+ff02::2 &ICMPv6\\
+\hline
+ff02::c &SSDP, UDP\\
+\hline
+ff02::fb &MDNS\\
+\hline
+\end{tabular}
+\caption{Diferents adreces multicast i els seus protocols}
+\label{mult}
+\end{table}
+A continuació, s'explicarà un per un els protocols que s'han trobat 
+utilitzant aquest tipus de servei:\\
+%TODO elaborar
+\begin{itemize}
+\item BROWSER: aquest protocol és usat pels ordinadors amb el sistema operatiu de 
+Windows per a navegar fàcilment i localitzar els fitxers compartits en una xarxa.
+\item BJNP: aquest protocol es utilitzat per les impressores Canon amb la finalitat
+que els ordinadors puguin autodescobrir les impressores connectades a una xarxa.
+\item ICMP: informa de l'estat i situacons d'error en el funcionament de la xarxa. Amb
+exepció de l'aplicació Ping, aquest protocol no s'utilitza directament sobre les
+aplicacions d'usuari.
+\item IGMPv2: protocol que permet establir grups de multicast en una xarxa d'IPv4.
+\item IPv4: protocol que permet identificar inequívocament un dispositiu lògic 
+connectat a la xarxa, per així poder connectar nodes.
+\item MDNS: \textit{Multicast Domain Name Service}, permet resoldre noms de host
+(i.e.: www.google.com) a  adreces IP dins de petites xarxes que no inclouen 
+un servidor DNS. És un servei que requereix zero configuració. Tot i que no va
+estar dissenyat per a servidors dee DNS propis, pot ser utilitzat amb aquests.
+\item LLMNR: és un protocol basant en el DNS per a trobar noms de domini en el mateix
+link local. És inclòs en la majoria de Windows, així com està implementat per
+systemd en Linux.
+\item IPv6: protocol que cerca solucionar els problemes de quantitat d'adreces
+disponibles, qualitat de servei i seguretat per a l'adreçament d'Internet. 
+Algunes de les seves funcionalitats han sigut portades a IPv4.
+\item ICMPv6: ICMP per a IPv6, és una simplificació de IGMP, ICMP i ARP pel protocol
+d'IPv6, introduint, a més a més, algunes simplificacions i eliminant missatges obsolets.
+\item DHCPv6: proporciona una configuració administrada sobre els dispositius d'IPv6,
+és a dir, entre altres coses, donen una adreça IPv6 als clients que la soliciten.
+\item SSDP: protocol que serveix per a descobrir serveis dins d'una mateixa xarxa.
+És un dels protocols utilitzats per \textit{\textbf{U}niversal \textbf{P}lug 
+a\textbf{n}d \textbf{P}lay} (UPnP).
+\item UDP: protocol per a enviar datagrames. En contraposició a TCP, no garanteix res,
+més enllà dels paquests rebuts saber en quina aplicació estan mitjançant el port.
+\end{itemize}
+\subsection{Gràfica de distribució dels protocols de nivell 3}
+Per a dur a terme aquesta gràfica, s'ha extret les dades de 
+"\textit{Statistics > Protocol Hierearchy}. En aquest menú, hem aconseguit
+extreure l'informació de la taula \ref{graph:tab}\\
+\begin{table}[!h]
+\centering
+\begin{tabular}{|C{2cm}|C{2cm}|C{2cm}|}
+\hline 
+Protocol & Nombre de paquets &Percentatge de paquets\\
+\hline
+LLC &97 &0.6\%\\
+\hline
+IPX &91 &0.6\%\\
+\hline
+IPv6 &550 &3.5\%\\
+\hline
+IPv4 &5616 &35.5\%\\
+\hline
+ARP &9451 &59.8\%\\
+\hline
+\end{tabular}
+\caption{Taula de protocols de nivell 3}
+\label{graph:tab}
+\end{table}
+Amb aquestes dades, s'ha generat el gràfic \ref{graph:img}\\
+\begin{figure}
+\centering
+\includegraphics[scale=2]{graphic.png}
+\caption{Gràfic de sectors dels protocols de nivell 3}
+\label{graph:img}
+\end{figure}
 \section{Anàlisi nivell de transport}
 \section{Conclusions}
+\section{Annex}
+\begin{table}[!h]
+\centering
+\begin{tabular}{|C{4cm}|}
+\hline
+Adreces multicast\\
+\hline
+ff02::1:ff16:f8e9\\
+\hline
+ff02::1:ff3a:5c61\\
+\hline
+ff02::1:ff4e:9436\\
+\hline
+ff02::1:ff52:275\\
+\hline
+ff02::1:ff5f:1802\\
+\hline
+ff02::1:ff62:ce40\\
+\hline
+ff02::1:ff74:9938\\
+\hline
+ff02::1:ff84:f581\\
+\hline
+ff02::1:ff90:170b\\
+\hline
+ff02::1:ff92:210f\\
+\hline
+ff02::1:ff9e:c17f\\
+\hline
+ff02::1:ffac:b684\\
+\hline
+ff02::1:ffb5:ecdb\\
+\hline
+ff02::1:ffbf:a6df\\
+\hline
+ff02::1:ffc8:6083\\
+\hline
+ff02::1:ffca:c1b3\\
+\hline
+ff02::1:ffdb:187\\
+\hline
+ff02::1:ffe1:112f\\
+\hline
+ff02::1:ffeb:4add\\
+\hline
+\end{tabular}
+\caption{Adreces multicast de format ff02::1:ff00:0/104}
+\label{mult:104}
+\end{table}
 \end{document}
 
 
