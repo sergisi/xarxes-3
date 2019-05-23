@@ -44,27 +44,6 @@
 \end{titlepage}}
 %Emplenar a partir d'aquí per a fer el títol : no se com es fa el package
 %S'han de renombrar totes, inclús date, si un camp es deixa en blanc no apareix
-
-\tikzset{
-	%Style of nodes. Si poses aquí un estil es pot reutilitzar més facilment
-	base/.style = {circle, draw=black,
-      minimum width=0.75cm, font=\ttfamily,
-      text centered},
-    dots/.style = {circle, draw=white,
-      minimum width=0.75cm, font=\ttfamily,
-      text centered},
-    last/.style = {base, fill=orange!15},
-    remove/.style = {base, fill=red!15},
-    change/.style = {base, fill=green!15},Xarxes
-    tree/.style = {base, rectangle, minimum height=0.75cm},
-    stack/.style = {rectangle, font=\ttfamily, rounded corners, draw=black,
-      minimum width=4cm, minimum height=1cm,
-      text centered},
-   	even/.style = {stack, fill=green!30},
-   	odd/.style = {stack, fill=orange!15},
-   	blank/.style = {stack, minimum height=0.5cm, draw=white},
-   	typetag/.style={rectangle, draw=black!50, font=\ttfamily, anchor=west}
-}
 \renewcommand{\figurename}{Figura}
 \title{Anàlisi de la xarxa mitjançant l'analitzador de protocols de xarxa Wireshark}
 \author{Sergi Simón Balcells\\21040111X}
@@ -294,7 +273,6 @@ ff02::fb &MDNS\\
 \end{table}
 A continuació, s'explicarà un per un els protocols que s'han trobat 
 utilitzant aquest tipus de servei:\\
-%TODO elaborar
 \begin{itemize}
 \item BROWSER: aquest protocol és usat pels ordinadors amb el sistema operatiu de 
 Windows per a navegar fàcilment i localitzar els fitxers compartits en una xarxa.
@@ -358,6 +336,89 @@ Amb aquestes dades, s'ha generat el gràfic \ref{graph:img}\\
 \label{graph:img}
 \end{figure}
 \section{Anàlisi nivell de transport}
+Abans de començar s'ha de desestimar certs paquets i protocols per a dur
+a terme les diferents qüestions. A continuació, s'exposarà 
+els filtres que s'utilitzaran per a cada un dels punts.\\
+\begin{itemize}
+\item Pels paquets que tenen com a destí l'adreça de broadcast de nivell 2,
+s'empraràla comanda:
+\begin{verbatim}
+!eth.dst == ff:ff:ff:ff:ff:ff
+\end{verbatim}
+\item Pels paquets d'IPv6, s'utilitzarà:
+\begin{verbatim}
+!ipv6
+\end{verbatim}
+\item Pels paquets de multicast, s'aplicarà el filtre:
+\begin{verbatim}
+!(eth.dst[0] & 1)
+\end{verbatim}
+Que no utilitza la segona clausula donat que el paquets de broadcast
+ja han estat eliminats.
+\item Pel protocols ARP, DNS i NTP s'emprarà:
+\begin{verbatim}
+!arp and !dns and !ntp
+\end{verbatim}
+\end{itemize}
+Aplicant totes les condicions obtenim el filtre:
+\begin{verbatim}
+!(eth.dst[0] & 1) and !arp and !dns and !ntp 
+and !ipv6 and !eth.dst == ff:ff:ff:ff:ff:ff
+\end{verbatim}
+A causa de que l'adreça de broadcast ethernet té el primer valor a 1,
+la filtre per a detectar multicast simplifica el filtre fins a tenir:
+\begin{verbatim}
+!(eth.dst[0] & 1) and !arp and !dns and !ntp 
+and !ipv6
+\end{verbatim}
+\subsection{Connexions TCP no dutes a terme}
+S'ha utilitzat el filtre:
+\begin{verbatim}
+tcp and tcp.flags.reset == 1
+\end{verbatim}
+Per a veure les connexions que han acabat per resposta del servidor.
+Per a les altres connexions, s'ha mirat una per una les converses de TCP,
+veient si aquestes havien finalitzat de forma excepcional o si es podia treure
+conclusions d'aquests. Per a visualtizar les diferents connexions, s'ha utilitzat
+la eina \textit{Statistics > Conversations > TCP}. Amb la informació obtinguda
+s'ha elaborat la taula \ref{tcp:failed}.\\\\
+\begin{table}[!h]
+\centering
+\begin{tabular}{|C{2cm}|C{1.5cm}|C{2cm}|C{1cm}|C{3cm}|}
+\hline
+IP origen  &Port Origen  &IP Destí  &Port Destí  &Motiu Fallida
+\\
+\hline
+172.16.0.112  &34640  &10.35.12.34  &1759  &No hi ha hagut resposta per part del destí al SYN
+\\
+\hline
+172.16.0.112  &60158  &10.50.54.87  &9876  &No hi ha hagut resposta per part del destí al SYN
+\\
+\hline
+172.16.0.102  &43384  &172.0.16.111  &1759  &No hi ha hagut resposta per part del destí al SYN
+\\
+\hline
+84.88.27.7  &80  &172.16.0.113  &42901  &S'ha rebut un paquet amb el flag RST
+\\
+\hline
+172.16.0.109  &33764  &172.16.0.113  &80  &S'ha rebut un paquet amb el flag RST
+\\
+\hline
+172.16.0.105  &44730  &172.16.0.122  &80  &S'ha rebut un paquet amb el flag RST
+\\
+\hline
+172.16.0.106  &42542  &172.16.0.118  &6591  &S'ha rebut un paquet amb el flag RST
+\\
+\hline
+\end{tabular}
+\caption{Taula amb les connexions TCP fallides}
+\label{tcp:failed}
+\end{table}
+S'ha tingut en compte el temps de l'últim SYN enviat i 
+el temps de connexió gravat per a decidir s'ha realment 
+s'havia perdut la connexió o el paquet de resposta no s'ha
+gravat en la sel·lecció de la trama.
+%TODO afegir taula tcp:failed aquí
 \section{Conclusions}
 \section{Annex}
 \begin{table}[!h]

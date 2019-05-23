@@ -1,0 +1,12 @@
+IP origen &Port Origen &IP Destí &Port Destí &Motiu Fallida
+172.16.0.112 &34640 &10.35.12.34 &1759 &No hi ha hagut resposta per part del destí al SYN
+172.16.0.112 &60158 &10.50.54.87 &9876 &No hi ha hagut resposta per part del destí al SYN
+172.16.0.102 &43384 &172.0.16.111 &1759 &No hi ha hagut resposta per part del destí al SYN
+84.88.27.7 &80 &172.16.0.113 &42901 &S'ha rebut un paquet amb el flag RST
+172.16.0.109 &33764 &172.16.0.113 &80 &S'ha rebut un paquet amb el flag RST
+172.16.0.105 &44730 &172.16.0.122 &80 &S'ha rebut un paquet amb el flag RST
+172.16.0.106 &42542 &172.16.0.118 &6591 &S'ha rebut un paquet amb el flag RST
+
+S'ha tingut en compte el temps de l'últim SYN enviat i el temps de connexió gravat per
+a decidir s'ha realment s'havia perdut la connexió o el paquet de resposta no s'ha
+gravat en la sel·lecció de la trama.

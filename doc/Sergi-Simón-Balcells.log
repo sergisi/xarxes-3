@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.26)  22 MAY 2019 22:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.26)  23 MAY 2019 03:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -993,20 +993,20 @@ Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
 (./Sergi-Simón-Balcells.aux)
 \openout1 = `Sergi-Simón-Balcells.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1041,7 +1041,7 @@ e
 ABD: EveryShipout initializing macros
 \c@lstlisting=\count150
 \AtBeginShipoutBox=\box69
-Package hyperref Info: Link coloring OFF on input line 78.
+Package hyperref Info: Link coloring OFF on input line 57.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1051,9 +1051,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count151
 )
-LaTeX Info: Redefining \ref on input line 78.
-LaTeX Info: Redefining \pageref on input line 78.
-LaTeX Info: Redefining \nameref on input line 78.
+LaTeX Info: Redefining \ref on input line 57.
+LaTeX Info: Redefining \pageref on input line 57.
+LaTeX Info: Redefining \nameref on input line 57.
 
 (./Sergi-Simón-Balcells.out) (./Sergi-Simón-Balcells.out)
 \@outlinefile=\write4
@@ -1076,23 +1076,23 @@ oc)
 \openout7 = `Sergi-Simón-Balcells.lot'.
 
  [1]
-Underfull \hbox (badness 10000) in paragraph at lines 93--100
+Underfull \hbox (badness 10000) in paragraph at lines 72--79
 
  []
 
 
-Overfull \hbox (27.41739pt too wide) in paragraph at lines 103--109
+Overfull \hbox (27.41739pt too wide) in paragraph at lines 82--88
 \OT1/cmr/m/n/10 Sabent l'adre^^Xca de xarxa, po-dem con-cloure que l'adre^^Xca 
 de broad-cast ^^Ses 172.16.255.255,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--109
+Underfull \hbox (badness 10000) in paragraph at lines 82--88
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 115--117
+Underfull \hbox (badness 10000) in paragraph at lines 94--96
 
  []
 
@@ -1100,89 +1100,101 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.128 \subsubsection
+l.107 \subsubsection
                     {Ethernet II} [1]
-Underfull \hbox (badness 10000) in paragraph at lines 129--132
+Underfull \hbox (badness 10000) in paragraph at lines 108--111
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 137--145
+Underfull \hbox (badness 10000) in paragraph at lines 116--124
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 146.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 125.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 146.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 125.
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--166
+Underfull \hbox (badness 10000) in paragraph at lines 141--145
 
  []
 
 [2]
-Overfull \hbox (111.00464pt too wide) in paragraph at lines 167--168
+Overfull \hbox (111.00464pt too wide) in paragraph at lines 146--147
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 225--253
+Underfull \hbox (badness 10000) in paragraph at lines 204--232
 
  []
 
 [3]
-Overfull \hbox (8.82474pt too wide) in paragraph at lines 258--298
+Overfull \hbox (8.82474pt too wide) in paragraph at lines 237--276
 \OT1/cmr/m/n/10 Ha do-nat el re-sul-tat de la taula []4[]. S'ha ex-tret les adr
 eces del ti-pus ff02:1:ff00:0/104,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 258--298
+Underfull \hbox (badness 10000) in paragraph at lines 237--276
 
  []
 
 [4]
-Overfull \hbox (4.36122pt too wide) in paragraph at lines 323--326
+Overfull \hbox (4.36122pt too wide) in paragraph at lines 301--304
 \OT1/cmr/m/n/10 xarxa. []Es un dels pro-to-cols util-itzats per \OT1/cmr/bx/it/
 10 U\OT1/cmr/m/it/10 niversal \OT1/cmr/bx/it/10 P\OT1/cmr/m/it/10 lug a\OT1/cmr
 /bx/it/10 n\OT1/cmr/m/it/10 d \OT1/cmr/bx/it/10 P\OT1/cmr/m/it/10 lay \OT1/cmr/
 m/n/10 (UPnP). 
  []
 
-<images/graphic.png, id=162, 144.54pt x 100.4553pt>
+<images/graphic.png, id=169, 144.54pt x 100.4553pt>
 File: images/graphic.png Graphic file (type png)
 <use images/graphic.png>
-Package pdftex.def Info: images/graphic.png  used on input line 356.
+Package pdftex.def Info: images/graphic.png  used on input line 334.
 (pdftex.def)             Requested size: 289.07925pt x 200.9101pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[5]
+
+Underfull \hbox (badness 10000) in paragraph at lines 339--342
+
+ []
+
+[5] [6 <./images/graphic.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 379--422
+
+ []
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[6 <./images/graphic.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 411.
- [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 411.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 472.
+ [8] [9]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 472.
  (./Sergi-Simón-Balcells.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 411.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 411.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 472.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 472.
 Package rerunfilecheck Info: File `Sergi-Simón-Balcells.out' has not changed.
-(rerunfilecheck)             Checksum: 2BC71AA274EE4173239E344B73518F25;1341.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 411.
+(rerunfilecheck)             Checksum: C3B87B272EC326D15C52881F067AC748;1422.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 472.
  ) 
 Here is how much of TeX's memory you used:
- 20625 strings out of 494880
- 404371 string characters out of 6179600
- 496836 words of memory out of 5000000
- 23552 multiletter control sequences out of 15000+600000
- 6616 words of font info for 24 fonts, out of 8000000 for 9000
+ 20612 strings out of 494880
+ 403972 string characters out of 6179600
+ 496830 words of memory out of 5000000
+ 23534 multiletter control sequences out of 15000+600000
+ 6784 words of font info for 25 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 62i,12n,71p,420b,1002s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,13n,71p,420b,1002s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/te
@@ -1190,11 +1202,12 @@ xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmti10.pfb>
-Output written on Sergi-Simón-Balcells.pdf (9 pages, 139229 bytes).
+1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmtt10.pfb>
+Output written on Sergi-Simón-Balcells.pdf (11 pages, 156792 bytes).
 PDF statistics:
- 217 PDF objects out of 1000 (max. 8388607)
- 195 compressed objects within 2 object streams
- 45 named destinations out of 1000 (max. 500000)
- 162 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 239 PDF objects out of 1000 (max. 8388607)
+ 213 compressed objects within 3 object streams
+ 49 named destinations out of 1000 (max. 500000)
+ 170 words of extra memory for PDF output out of 10000 (max. 10000000)
 
