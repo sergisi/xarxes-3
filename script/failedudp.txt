@@ -1,0 +1,9 @@
+Origen &Destí &Motiu
+IP &Port &IP &Port
+172.16.0.111 &55864 &172.16.0.112 &1034 &Port inabastible
+131.206.192.49 &35430 &172.16.0.113 &33504 &Port inabastible
+130.206.192.49 &54863 &172.16.0.113 &33505 &Port inabastible
+130.206.192.49 &50066 &172.16.0.113 &33503 &Port inabastible
+130.206.192.49 &41967 &172.16.0.113 &33507 &Port inabastible
+130.206.192.49 &41722 &172.16.0.113 &33508 &Port inabastible
+130.206.192.49 &58040 &172.16.0.113 &33509 &Port inabastible

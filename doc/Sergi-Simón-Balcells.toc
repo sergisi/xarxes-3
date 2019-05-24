@@ -15,5 +15,9 @@
 \contentsline {subsection}{\numberline {3.6}Gr\IeC {\`a}fica de distribuci\IeC {\'o} dels protocols de nivell 3}{5}{subsection.3.6}
 \contentsline {section}{\numberline {4}An\IeC {\`a}lisi nivell de transport}{6}{section.4}
 \contentsline {subsection}{\numberline {4.1}Connexions TCP no dutes a terme}{7}{subsection.4.1}
-\contentsline {section}{\numberline {5}Conclusions}{7}{section.5}
-\contentsline {section}{\numberline {6}Annex}{7}{section.6}
+\contentsline {subsection}{\numberline {4.2}Connexions TCP completes}{7}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}HTTP i HTTPS}{7}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Connexions no HTTP i HTTPS}{8}{subsubsection.4.2.2}
+\contentsline {subsection}{\numberline {4.3}Connexions UDP no dutes a terme}{9}{subsection.4.3}
+\contentsline {section}{\numberline {5}Conclusions}{10}{section.5}
+\contentsline {section}{\numberline {6}Annex}{10}{section.6}

@@ -53,7 +53,6 @@
 \grup{GM3}
 
 %Comença el document
-
 \begin{document}
 \maketitle
 \thispagestyle{empty}
@@ -389,13 +388,16 @@ s'ha elaborat la taula \ref{tcp:failed}.\\\\
 IP origen  &Port Origen  &IP Destí  &Port Destí  &Motiu Fallida
 \\
 \hline
-172.16.0.112  &34640  &10.35.12.34  &1759  &No hi ha hagut resposta per part del destí al SYN
+172.16.0.112  &34640  &10.35.12.34  &1759  &No hi ha hagut 
+resposta per part del destí al SYN
 \\
 \hline
-172.16.0.112  &60158  &10.50.54.87  &9876  &No hi ha hagut resposta per part del destí al SYN
+172.16.0.112  &60158  &10.50.54.87  &9876  &No hi ha hagut
+ resposta per part del destí al SYN
 \\
 \hline
-172.16.0.102  &43384  &172.0.16.111  &1759  &No hi ha hagut resposta per part del destí al SYN
+172.16.0.102  &43384  &172.0.16.111  &1759  &No hi ha hagut 
+resposta per part del destí al SYN
 \\
 \hline
 84.88.27.7  &80  &172.16.0.113  &42901  &S'ha rebut un paquet amb el flag RST
@@ -411,14 +413,170 @@ IP origen  &Port Origen  &IP Destí  &Port Destí  &Motiu Fallida
 \\
 \hline
 \end{tabular}
-\caption{Taula amb les connexions TCP fallides}
+\caption{Connexions TCP fallides}
 \label{tcp:failed}
 \end{table}
 S'ha tingut en compte el temps de l'últim SYN enviat i 
 el temps de connexió gravat per a decidir s'ha realment 
 s'havia perdut la connexió o el paquet de resposta no s'ha
 gravat en la sel·lecció de la trama.
-%TODO afegir taula tcp:failed aquí
+\subsection{Connexions TCP completes}
+En aquesta subsecció, es diran aquelles connexions TCP que han
+sigut completes i com s'han trobat. Per a fer-ho, s'han subdividit
+aquelles connexions que són comunicacions HTTP i HTTPS,
+i la resta de comunicacions.
+\subsubsection{HTTP i HTTPS}
+Per a cercar les converses que han tingut alguna connexió TCP, s'ha utilitzat
+el filtre:
+\begin{verbatim}
+tcp.port == 80 or tcp == 443
+\end{verbatim}
+Una vegada utilitzat, s'ha utilitzat la eina per a veure converses del
+Wireshark, amb la opció de només veure les que estiguin dins del filtre,
+per a veure quines converses s'han matingut en aquests ports. L'única conversa
+en HTTPS és la que té per IP origen i destí els valors 172.16.0.112 i 
+213.175.193.206, per a simplificar la taula 
+\ref{tcp:http}, s'ha unificat amb una sola taula
+en haver-se esmentat ja els valors.
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+IP origen &IP destí\\
+\hline
+172.16.0.109 &10.69.4.176\\
+\hline
+172.16.0.109 &91.195.125.127\\
+\hline
+172.16.0.109 &147.91.204.28\\
+\hline
+172.16.0.109 &13.219.28.2\\
+\hline
+172.16.0.109 &94.75.223.121\\
+\hline
+172.16.0.109 &129.177.13.120\\
+\hline
+172.16.0.109 &5.135.162.176\\
+\hline
+172.16.0.109 &178.33.193.139\\
+\hline
+172.16.0.109 &91.210.88.42\\
+\hline
+172.16.0.109 &217.31.202.63\\
+\hline
+172.16.0.112 &209.132.181.16\\
+\hline
+172.16.0.112 &213.175.193.206\\
+\hline
+172.16.0.112 &84.88.27.7\\
+\hline
+\end{tabular}
+\caption{Conversacions completes en HTTP i HTTPS}
+\label{tcp:http}
+\end{table}
+\subsubsection{Connexions no HTTP i HTTPS}
+Per a dur a buscar aquestes connexions, s'ha utilitzat el filtre:
+\begin{verbatim}
+!(tcp.port == 80 or tcp.port == 443)
+\end{verbatim}
+Utilitzant el mateix procediment d'abans, s'ha emprat la eina de Converses del
+Wireshark i s'han mirat una per una si les connexions eren completes o no.
+Amb aquesta premisa s'ha extret l'anàlisi de la taula \ref{tcp:!htpp}.
+Per a calcular l'MTU, s'ha afegit 40 bytes al camp proporcionat pel
+protocol TCP sobre el segment més llarg, a causa de la mida de les capçaleres
+mínima de les capçaleres TCP i IP (20 bytes cada una).\\
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c|c|c|C{1.3cm}|c|c|c|C{1.3cm}|}
+\hline
+\multicolumn{4}{|c|}{Origen}  &\multicolumn{4}{c|}{Destí}\\
+\hline
+IP &Port &MTU &Finestra inicial &IP &Port &MTU &Finestra inicial\\
+\hline
+172.16.0.102 &48009 &1500 &14600 &172.16.0.105 &9642 &1500 &14480\\
+\hline
+172.16.0.104 &36664 &1500 &14600 &172.16.0.111 &1759 &1500 &14480\\
+\hline
+172.16.0.104 &45737 &1500 &14600 &172.16.0.125 &22 &1500 &14480\\
+\hline
+172.16.0.105 &52193 &1500 &14600 &172.16.0.108 &7856 &1500 &14480\\
+\hline
+172.16.0.106 &45874 &1500 &14600 &172.16.0.112 &22 &1500 &14480\\
+\hline
+172.16.0.106 &52180 &1500 &14600 &172.16.0.108 &7856 &1500 &14480\\
+\hline
+172.16.0.106 &50316 &1500 &14600 &172.16.0.103 &21 &1500 &14480\\
+\hline
+172.16.0.106 &38368 &1500 &14600 &172.16.0.115 &7658 &1500 &14480\\
+\hline
+172.16.0.109 &49608 &1500 &14600 &172.16.0.108 &7856 &1500 &14480\\
+\hline
+172.16.0.112 &42095 &1500 &14600 &172.16.0.102 &21 &1500 &14480\\
+\hline
+\end{tabular}
+\caption{Conversacions completes no pertanyens a HTTP i HTTPS}
+\label{tcp:!htpp}
+\end{table}
+
+\subsection{Connexions UDP no dutes a terme}
+UDP no és un protocol orientat a connexió, pel que dins del protocol
+costarà saber si alguna connexió UDP no s'ha dut a terme. Però, el
+protocol ICMP avisa quan algun host, port o destí no ha sigut trobat, donant
+així una connexió UDP fallida. Utilitzant el filtre:
+\begin{verbatim}
+upd and icmp
+\end{verbatim}
+Trobarem els missatges de xarxa produits per aquest tipus de connexió.
+Però, donat que hi ha molts missatges de \textit{Time to live}, i, a causa
+de que aquest missatge podria ser tractat per una capa superior, s'ha
+desestimat tots aquests paquets treient el seu camp amb el filtre:
+\begin{verbatim}
+!icmp.type == 11
+\end{verbatim}
+D'aquesta forma, es facilita adquirir les dades amb les quals,
+s'ha efectuat la taula \ref{udp:failed}.
+%TODO afegir udp:failed
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c|c|c|c|C{3cm}|}
+\hline
+\multicolumn{2}{|c|}{Origen}  &\multicolumn{2}{|c|}{Destí} 
+&\multirow{2}{*}{Motiu}\\
+\cline{1-4}
+IP  &Port  &IP  &Port &
+\\
+\hline
+172.16.0.111  &55864  &172.16.0.112  &1034  &Port inabastible
+\\
+\hline
+131.206.192.49  &35430  &172.16.0.113  &33504  &Port inabastible
+\\
+\hline
+130.206.192.49  &54863  &172.16.0.113  &33505  &Port inabastible
+\\
+\hline
+130.206.192.49  &50066  &172.16.0.113  &33503  &Port inabastible
+\\
+\hline
+130.206.192.49  &41967  &172.16.0.113  &33507  &Port inabastible
+\\
+\hline
+130.206.192.49  &41722  &172.16.0.113  &33508  &Port inabastible
+\\
+\hline
+130.206.192.49  &58040  &172.16.0.113  &33509  &Port inabastible
+\\
+\hline
+\end{tabular}
+\caption{Connexions TCP fallides}
+\label{udp:failed}
+\end{table}
+
+% Soc un spaghetti per a que sapigues quan comença les conclusions
+% YJUUU
+% VOLA
+% XAN XAN
+% Si Sol fa sol fa mi (Nocture de Chopin)
 \section{Conclusions}
 \section{Annex}
 \begin{table}[!h]
