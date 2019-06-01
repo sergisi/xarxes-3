@@ -7,4 +7,8 @@
 \contentsline {table}{\numberline {7}{\ignorespaces Conversacions completes en HTTP i HTTPS}}{9}{table.7}
 \contentsline {table}{\numberline {8}{\ignorespaces Conversacions completes no pertanyens a HTTP i HTTPS}}{9}{table.8}
 \contentsline {table}{\numberline {9}{\ignorespaces Connexions TCP fallides}}{10}{table.9}
-\contentsline {table}{\numberline {10}{\ignorespaces Adreces multicast de format ff02::1:ff00:0/104}}{11}{table.10}
+\contentsline {table}{\numberline {10}{\ignorespaces Connexions UDP dutes a terme}}{10}{table.10}
+\contentsline {table}{\numberline {11}{\ignorespaces Connexions TCP a analitzar}}{11}{table.11}
+\contentsline {table}{\numberline {12}{\ignorespaces Primer an\IeC {\`a}lisi de connexi\IeC {\'o} TCP}}{11}{table.12}
+\contentsline {table}{\numberline {13}{\ignorespaces Segon an\IeC {\`a}lisi de connexi\IeC {\'o} TCP}}{12}{table.13}
+\contentsline {table}{\numberline {14}{\ignorespaces Adreces multicast de format ff02::1:ff00:0/104}}{13}{table.14}

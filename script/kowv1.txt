@@ -1,0 +1,8 @@
+Connexió 172.16.0.109 172.16.0.108
+Inici 8264 8265 8266
+Tancament 8348 8350 8351
+Nombre_bytes 44k 1772
+Bits/s_Brut 1216k 48k
+Bits/s_Net 1190k 47k
+Opcions MSM:1460 SACK:permitted TSval:246717 TSecr:0 NOP WS:7(x128)
+Seqüència 4204505787 927140671

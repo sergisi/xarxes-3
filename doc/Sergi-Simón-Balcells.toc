@@ -19,5 +19,8 @@
 \contentsline {subsubsection}{\numberline {4.2.1}HTTP i HTTPS}{7}{subsubsection.4.2.1}
 \contentsline {subsubsection}{\numberline {4.2.2}Connexions no HTTP i HTTPS}{8}{subsubsection.4.2.2}
 \contentsline {subsection}{\numberline {4.3}Connexions UDP no dutes a terme}{9}{subsection.4.3}
-\contentsline {section}{\numberline {5}Conclusions}{10}{section.5}
-\contentsline {section}{\numberline {6}Annex}{10}{section.6}
+\contentsline {subsection}{\numberline {4.4}Connexions UDP dutes a terme}{10}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}An\IeC {\`a}lisi connexions TCP}{10}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}Gr\IeC {\`a}fica TCP i UDP}{12}{subsection.4.6}
+\contentsline {section}{\numberline {5}Conclusions}{13}{section.5}
+\contentsline {section}{\numberline {6}Annex}{13}{section.6}
