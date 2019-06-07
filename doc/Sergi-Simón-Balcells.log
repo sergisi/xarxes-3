@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.26)  2 JUN 2019 00:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.26)  7 JUN 2019 03:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -982,44 +982,81 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
 )
+(/usr/share/texmf/tex/latex/bytefield/bytefield.sty
+Package: bytefield 2017/09/15 v2.4 Network protocol diagrams
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count144
+\calc@Bcount=\count145
+\calc@Adimen=\dimen176
+\calc@Bdimen=\dimen177
+\calc@Askip=\skip49
+\calc@Bskip=\skip50
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count146
+\calc@Cskip=\skip51
+)
+\bytefield@height=\skip52
+\bytefield@height@increment=\skip53
+\entire@bytefield@picture=\box68
+\bf@bitwidth=\skip54
+\bf@bitheight=\skip55
+\units@wide=\skip56
+\units@tall=\skip57
+\units@high=\skip58
+\header@xpos=\skip59
+\c@header@val=\count147
+\c@max@header@val=\count148
+\curly@box=\box69
+\wordlabelr@start=\skip60
+\wordlabelr@end=\skip61
+\wordlabell@start=\skip62
+\wordlabell@end=\skip63
+\total@lbox@width=\skip64
+\label@box@width=\skip65
+\label@box@height=\skip66
+\word@label@box=\box70
+)
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
 Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
-\col@sep=\dimen176
-\extrarowheight=\dimen177
+\col@sep=\dimen178
+\extrarowheight=\dimen179
 \NC@list=\toks38
-\extratabsurround=\skip49
-\backup@length=\skip50
+\extratabsurround=\skip67
+\backup@length=\skip68
 )
 (./Sergi-Simón-Balcells.aux)
 \openout1 = `Sergi-Simón-Balcells.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count144
-\scratchdimen=\dimen178
-\scratchbox=\box68
-\nofMPsegments=\count145
-\nofMParguments=\count146
+\scratchcounter=\count149
+\scratchdimen=\dimen180
+\scratchbox=\box71
+\nofMPsegments=\count150
+\nofMParguments=\count151
 \everyMPshowfont=\toks39
-\MPscratchCnt=\count147
-\MPscratchDim=\dimen179
-\MPnumerator=\count148
-\makeMPintoPDFobject=\count149
+\MPscratchCnt=\count152
+\MPscratchDim=\dimen181
+\MPnumerator=\count153
+\makeMPintoPDFobject=\count154
 \everyMPtoPDFconversion=\toks40
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1039,9 +1076,9 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-\c@lstlisting=\count150
-\AtBeginShipoutBox=\box69
-Package hyperref Info: Link coloring OFF on input line 56.
+\c@lstlisting=\count155
+\AtBeginShipoutBox=\box72
+Package hyperref Info: Link coloring OFF on input line 59.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1049,11 +1086,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count151
+\c@section@level=\count156
 )
-LaTeX Info: Redefining \ref on input line 56.
-LaTeX Info: Redefining \pageref on input line 56.
-LaTeX Info: Redefining \nameref on input line 56.
+LaTeX Info: Redefining \ref on input line 59.
+LaTeX Info: Redefining \pageref on input line 59.
+LaTeX Info: Redefining \nameref on input line 59.
 
 (./Sergi-Simón-Balcells.out) (./Sergi-Simón-Balcells.out)
 \@outlinefile=\write4
@@ -1076,23 +1113,23 @@ oc)
 \openout7 = `Sergi-Simón-Balcells.lot'.
 
  [2]
-Underfull \hbox (badness 10000) in paragraph at lines 71--78
+Underfull \hbox (badness 10000) in paragraph at lines 77--84
 
  []
 
 
-Overfull \hbox (27.41739pt too wide) in paragraph at lines 81--87
+Overfull \hbox (27.41739pt too wide) in paragraph at lines 87--93
 \OT1/cmr/m/n/10 Sabent l'adre^^Xca de xarxa, po-dem con-cloure que l'adre^^Xca 
 de broad-cast ^^Ses 172.16.255.255,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--87
+Underfull \hbox (badness 10000) in paragraph at lines 87--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 93--95
+Underfull \hbox (badness 10000) in paragraph at lines 99--101
 
  []
 
@@ -1100,156 +1137,462 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.106 \subsubsection
+l.112 \subsubsection
                     {Ethernet II} [1]
-Underfull \hbox (badness 10000) in paragraph at lines 107--110
+Underfull \hbox (badness 10000) in paragraph at lines 113--116
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 115--123
+Underfull \hbox (badness 10000) in paragraph at lines 121--129
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 124.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 130.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 124.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 130.
+\height=\dimen182
+\depth=\dimen183
+\totalheight=\dimen184
+\width=\dimen185
+\height=\dimen186
+\depth=\dimen187
+\totalheight=\dimen188
+\width=\dimen189
+\height=\dimen190
+\depth=\dimen191
+\totalheight=\dimen192
+\width=\dimen193
+\height=\dimen194
+\depth=\dimen195
+\totalheight=\dimen196
+\width=\dimen197
+\height=\dimen198
+\depth=\dimen199
+\totalheight=\dimen256
+\width=\dimen257
+\height=\dimen258
+\depth=\dimen259
+\totalheight=\dimen260
+\width=\dimen261
+\height=\dimen262
+\depth=\dimen263
+\totalheight=\dimen264
+\width=\dimen265
+\height=\dimen266
+\depth=\dimen267
+\totalheight=\dimen268
+\width=\dimen269
+\height=\dimen270
+\depth=\dimen271
+\totalheight=\dimen272
+\width=\dimen273
+\height=\dimen274
+\depth=\dimen275
+\totalheight=\dimen276
+\width=\dimen277
+\height=\dimen278
+\depth=\dimen279
+\totalheight=\dimen280
+\width=\dimen281
+\height=\dimen282
+\depth=\dimen283
+\totalheight=\dimen284
+\width=\dimen285
+\height=\dimen286
+\depth=\dimen287
+\totalheight=\dimen288
+\width=\dimen289
+\height=\dimen290
+\depth=\dimen291
+\totalheight=\dimen292
+\width=\dimen293
+\height=\dimen294
+\depth=\dimen295
+\totalheight=\dimen296
+\width=\dimen297
 
-Underfull \hbox (badness 10000) in paragraph at lines 140--144
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+\height=\dimen298
+\depth=\dimen299
+\totalheight=\dimen300
+\width=\dimen301
+\height=\dimen302
+\depth=\dimen303
+\totalheight=\dimen304
+\width=\dimen305
+\height=\dimen306
+\depth=\dimen307
+\totalheight=\dimen308
+\width=\dimen309
+\height=\dimen310
+\depth=\dimen311
+\totalheight=\dimen312
+\width=\dimen313
+
+Overfull \hbox (1.52779pt too wide) in paragraph at lines 165--165
+ []\OT1/cmr/m/n/10 ECN 
+ []
+
+\height=\dimen314
+\depth=\dimen315
+\totalheight=\dimen316
+\width=\dimen317
+\height=\dimen318
+\depth=\dimen319
+\totalheight=\dimen320
+\width=\dimen321
+\height=\dimen322
+\depth=\dimen323
+\totalheight=\dimen324
+\width=\dimen325
+\height=\dimen326
+\depth=\dimen327
+\totalheight=\dimen328
+\width=\dimen329
+\height=\dimen330
+\depth=\dimen331
+\totalheight=\dimen332
+\width=\dimen333
+\height=\dimen334
+\depth=\dimen335
+\totalheight=\dimen336
+\width=\dimen337
+\height=\dimen338
+\depth=\dimen339
+\totalheight=\dimen340
+\width=\dimen341
+\height=\dimen342
+\depth=\dimen343
+\totalheight=\dimen344
+\width=\dimen345
+\height=\dimen346
+\depth=\dimen347
+\totalheight=\dimen348
+\width=\dimen349
+\height=\dimen350
+\depth=\dimen351
+\totalheight=\dimen352
+\width=\dimen353
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--180
 
  []
 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+\height=\dimen354
+\depth=\dimen355
+\totalheight=\dimen356
+\width=\dimen357
+\height=\dimen358
+\depth=\dimen359
+\totalheight=\dimen360
+\width=\dimen361
+\height=\dimen362
+\depth=\dimen363
+\totalheight=\dimen364
+\width=\dimen365
+\height=\dimen366
+\depth=\dimen367
+\totalheight=\dimen368
+\width=\dimen369
+\height=\dimen370
+\depth=\dimen371
+\totalheight=\dimen372
+\width=\dimen373
+\height=\dimen374
+\depth=\dimen375
+\totalheight=\dimen376
+\width=\dimen377
+\height=\dimen378
+\depth=\dimen379
+\totalheight=\dimen380
+\width=\dimen381
+\height=\dimen382
+\depth=\dimen383
+\totalheight=\dimen384
+\width=\dimen385
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+\height=\dimen386
+\depth=\dimen387
+\totalheight=\dimen388
+\width=\dimen389
+\height=\dimen390
+\depth=\dimen391
+\totalheight=\dimen392
+\width=\dimen393
+\height=\dimen394
+\depth=\dimen395
+\totalheight=\dimen396
+\width=\dimen397
+\height=\dimen398
+\depth=\dimen399
+\totalheight=\dimen400
+\width=\dimen401
+\height=\dimen402
+\depth=\dimen403
+\totalheight=\dimen404
+\width=\dimen405
+\height=\dimen406
+\depth=\dimen407
+\totalheight=\dimen408
+\width=\dimen409
+\height=\dimen410
+\depth=\dimen411
+\totalheight=\dimen412
+\width=\dimen413
+\height=\dimen414
+\depth=\dimen415
+\totalheight=\dimen416
+\width=\dimen417
+\height=\dimen418
+\depth=\dimen419
+\totalheight=\dimen420
+\width=\dimen421
+\height=\dimen422
+\depth=\dimen423
+\totalheight=\dimen424
+\width=\dimen425
+\height=\dimen426
+\depth=\dimen427
+\totalheight=\dimen428
+\width=\dimen429
+\height=\dimen430
+\depth=\dimen431
+\totalheight=\dimen432
+\width=\dimen433
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+\height=\dimen434
+\depth=\dimen435
+\totalheight=\dimen436
+\width=\dimen437
+\height=\dimen438
+\depth=\dimen439
+\totalheight=\dimen440
+\width=\dimen441
+\height=\dimen442
+\depth=\dimen443
+\totalheight=\dimen444
+\width=\dimen445
+\height=\dimen446
+\depth=\dimen447
+\totalheight=\dimen448
+\width=\dimen449
+\height=\dimen450
+\depth=\dimen451
+\totalheight=\dimen452
+\width=\dimen453
+\height=\dimen454
+\depth=\dimen455
+\totalheight=\dimen456
+\width=\dimen457
+\height=\dimen458
+\depth=\dimen459
+\totalheight=\dimen460
+\width=\dimen461
+\height=\dimen462
+\depth=\dimen463
+\totalheight=\dimen464
+\width=\dimen465
+\height=\dimen466
+\depth=\dimen467
+\totalheight=\dimen468
+\width=\dimen469
+\height=\dimen470
+\depth=\dimen471
+\totalheight=\dimen472
+\width=\dimen473
+\height=\dimen474
+\depth=\dimen475
+\totalheight=\dimen476
+\width=\dimen477
+\height=\dimen478
+\depth=\dimen479
+\totalheight=\dimen480
+\width=\dimen481
+\height=\dimen482
+\depth=\dimen483
+\totalheight=\dimen484
+\width=\dimen485
+\height=\dimen486
+\depth=\dimen487
+\totalheight=\dimen488
+\width=\dimen489
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 204--232
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 246--250
 
  []
 
 [3]
-Overfull \hbox (8.82474pt too wide) in paragraph at lines 237--276
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 310--338
+
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (8.82474pt too wide) in paragraph at lines 343--369
 \OT1/cmr/m/n/10 Ha do-nat el re-sul-tat de la taula []4[]. S'ha ex-tret les adr
 eces del ti-pus ff02:1:ff00:0/104,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 237--276
+Underfull \hbox (badness 10000) in paragraph at lines 343--369
 
  []
 
-[4]
-Overfull \hbox (4.36122pt too wide) in paragraph at lines 301--304
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 374--383
+
+ []
+
+[6]
+Overfull \hbox (4.36122pt too wide) in paragraph at lines 400--403
 \OT1/cmr/m/n/10 xarxa. []Es un dels pro-to-cols util-itzats per \OT1/cmr/bx/it/
 10 U\OT1/cmr/m/it/10 niversal \OT1/cmr/bx/it/10 P\OT1/cmr/m/it/10 lug a\OT1/cmr
 /bx/it/10 n\OT1/cmr/m/it/10 d \OT1/cmr/bx/it/10 P\OT1/cmr/m/it/10 lay \OT1/cmr/
 m/n/10 (UPnP). 
  []
 
-<images/graphic.png, id=226, 144.54pt x 100.4553pt>
+<images/graphic.png, id=248, 144.54pt x 100.4553pt>
 File: images/graphic.png Graphic file (type png)
 <use images/graphic.png>
-Package pdftex.def Info: images/graphic.png  used on input line 334.
+Package pdftex.def Info: images/graphic.png  used on input line 427.
 (pdftex.def)             Requested size: 289.07925pt x 200.9101pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 339--342
+Underfull \hbox (badness 10000) in paragraph at lines 432--435
 
  []
 
-[5] [6 <./images/graphic.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 379--424
-
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[7]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Overfull \hbox (28.02226pt too wide) in paragraph at lines 491--518
+[7] [8 <./images/graphic.png>]
+Overfull \hbox (4.52542pt too wide) in paragraph at lines 480--504
  [][] 
  []
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 618--682
+Underfull \hbox (badness 10000) in paragraph at lines 472--511
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 618--682
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[9]
+Overfull \hbox (28.02226pt too wide) in paragraph at lines 564--591
+ [][] 
  []
 
 [10]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 714--725
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 714--725
-
- []
-
 [11]
-<images/grp.png, id=269, 677.53125pt x 300.3722pt>
-File: images/grp.png Graphic file (type png)
-<use images/grp.png>
-Package pdftex.def Info: images/grp.png  used on input line 756.
-(pdftex.def)             Requested size: 338.76479pt x 150.18571pt.
+Underfull \hbox (badness 10000) in paragraph at lines 691--756
 
-Underfull \hbox (badness 10000) in paragraph at lines 748--760
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 691--756
 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[12] [13 <./images/grp.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 810.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 810.
+[12]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 789--805
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 789--805
+
+ []
+
+[13]
+<images/grp.png, id=291, 677.53125pt x 300.3722pt>
+File: images/grp.png Graphic file (type png)
+<use images/grp.png>
+Package pdftex.def Info: images/grp.png  used on input line 836.
+(pdftex.def)             Requested size: 338.76479pt x 150.18571pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 828--840
+
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 841--851
+
+ []
+
+[14] [15 <./images/grp.png>] [16]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 881.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 881.
  (./Sergi-Simón-Balcells.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 810.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 810.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 881.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 881.
 Package rerunfilecheck Info: File `Sergi-Simón-Balcells.out' has not changed.
 (rerunfilecheck)             Checksum: 0AF362DA6A5F4DC756151CC644084682;1958.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 810.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 881.
  ) 
 Here is how much of TeX's memory you used:
- 20653 strings out of 494880
- 404479 string characters out of 6179600
- 501274 words of memory out of 5000000
- 23553 multiletter control sequences out of 15000+600000
- 6784 words of font info for 25 fonts, out of 8000000 for 9000
+ 20910 strings out of 494880
+ 408323 string characters out of 6179600
+ 525295 words of memory out of 5000000
+ 23793 multiletter control sequences out of 15000+600000
+ 7094 words of font info for 26 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 62i,14n,71p,420b,1002s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,15n,71p,420b,1002s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmtt10.pfb>
-Output written on Sergi-Simón-Balcells.pdf (16 pages, 241998 bytes).
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10
+.pfb>
+Output written on Sergi-Simón-Balcells.pdf (19 pages, 263701 bytes).
 PDF statistics:
- 330 PDF objects out of 1000 (max. 8388607)
- 296 compressed objects within 3 object streams
- 70 named destinations out of 1000 (max. 500000)
+ 367 PDF objects out of 1000 (max. 8388607)
+ 327 compressed objects within 4 object streams
+ 79 named destinations out of 1000 (max. 500000)
  231 words of extra memory for PDF output out of 10000 (max. 10000000)
 

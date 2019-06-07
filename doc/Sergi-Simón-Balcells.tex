@@ -10,11 +10,14 @@
 \usepackage{listings}
 \usepackage{hyperref}
 \usepackage{amsmath}
+\usepackage{bytefield}
 \graphicspath{ {images/} }
 \usepackage{array}
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\newcommand\bithead[2]{\bitbox[]{#1}{\scriptsize\bfseries #2}}
 
 %Tot això hauria d'anar en un pkg, però no sé com és fa
 \newcommand*{\assignatura}[1]{\gdef\1assignatura{#1}}
@@ -65,6 +68,9 @@
 \newpage
 \pagenumbering{arabic}
 \section{Introducció}
+En aquesta practica es realitzarà un anàlisi d'una trama 
+d'una xarxa en produció. Per a realitzar-ho s'utilitzarà
+l'analitzador de protocols de xarxa Wireshark.
 \section{Caractarístiques de la xarxa}
 % Anàlisi paquest agafar característiques
 \subsection{Tipus d'adreçament a la capa de xarxa}
@@ -124,17 +130,117 @@ s'explicaran a continuació, juntament amb el seu valor de tipus.\\
 \item ARP, amb valor 0x0806, s'encarrega de resoldre i mantenir de manera automàtoca
 la taula d'equivalències entre les adreces MAC i les adreces IP dels nodes o màquines
 que es comuniquen.
+\begin{figure}[h!]
+\centering
+\begin{bytefield}[bitwidth=1.7em ]{16}
+  \bitheader{0-15}\\
+  \bitbox{16}{HTYPE} \\
+  \bitbox{16}{PTYPE}\\
+  \bitbox{8}{HLEN} &
+  \bitbox{8}{PLEN} \\
+  \bitbox{16}{Operació}\\
+  \bitbox{16}{Adreça hardware origen}\\
+  \bitbox{16}{següents 2 bytes}\\
+  \bitbox{16}{últims 2 bytes}\\
+  \bitbox{16}{Adreça protocol origen} \\
+  \bitbox{16}{últims 2 bytes} \\
+  \bitbox{16}{Adreça hardware destí}\\
+  \bitbox{16}{següents 2 bytes}\\
+  \bitbox{16}{últims 2 bytes}\\
+  \bitbox{16}{Adreça protocol destí} \\
+  \bitbox{16}{últims 2 bytes}\\  
+\end{bytefield}
+\caption{Estructura ARP}
+\label{frm:arp}
+\end{figure}
 \item IPv4, amb valor 0x0800, és el protocol per excelència d'Internet. Serveix
 per a la identiciació i connexió de nodes.
+\begin{figure}[!h]
+\centering
+\begin{bytefield}[bitwidth=1em]{32}
+  \bitheader{0-31}\\
+  \bitbox{4}{Versió}&
+  \bitbox{4}{IHL}&
+  \bitbox{6}{DSCP} &
+  \bitbox{2}{ECN} &
+  \bitbox{16}{Llargada total}\\
+  \bitbox{16}{Identificació}&
+  \bitbox{3}{Flags}&
+  \bitbox{13}{Fragment Offset} \\
+  \bitbox{8}{Time to Live}&
+  \bitbox{8}{Protocol}&
+  \bitbox{16}{Header Checksum} \\
+  \bitbox{32}{Adreça Origen} \\
+  \bitbox{32}{Adreça destí} \\
+  \bitbox{32}{Opcions (fins 4 vegades)} \\
+\end{bytefield}
+\caption{Estructura IPv4}
+\label{frm:ipv4}
+\end{figure}\\
 \item IPv6, amb valor 0x86dd, neix com a un protocol per a substituir IPv4, i
 treure els problemes que sorgeixen amb aquest, com és la falta d'adreces, seguretat i
 qualitat de servei. Moltes de les seves funcionalitats s'han portat enrere per al
 protocol de IPv4.
+\begin{figure}[h!]
+\centering
+\begin{bytefield}[bitwidth=1em ]{32}
+  \bitheader{0-31} \\
+  \bitbox{4}{Versió} &
+  \bitbox{8}{Prioritat} &
+  \bitbox{20}{Flux}\\
+  \bitbox{16}{Longitud càrrega útil} &
+  \bitbox{8}{Següent capçalera}&
+  \bitbox{8}{Limit de salt}\\
+  \bitbox{32}{Adreça origen (fins 128 bits)}\\
+  \bitbox{32}{Adreça destí (fins 128 bits)}\\
+\end{bytefield}
+\caption{Estructura IPv6}
+\end{figure}
 \item IPX, amb valor 0x8137, s'utilitza per a transmetre datagrames entre els
 diferents serviors i els programes de les estacions de treball.
+\begin{figure}[h!]
+\centering
+\begin{bytefield}[bitwidth=1em ]{32}
+  \bitheader{0-29} \\
+  \bitbox{16}{Checksum} &
+  \bitbox{16}{Longitud} \\
+  \bitbox{8}{Hop Count} &
+  \bitbox{8}{Package Type} &
+  \bitbox{16}{Adreça destí}\\
+  \bitbox{32}{...}\\
+  \bitbox{32}{...}\\
+  \bitbox{16}{...}&&
+  \bitbox{16}{Adreça Origen}\\
+  \bitbox{32}{...}\\
+  \bitbox{32}{...}\\
+  \bitbox{16}{...}\\
+\end{bytefield}
+\caption{Estructura IPv6}
+\end{figure}
 \item LLC, sense valor donat que està encapsulat amb IEEE 802.3 Ethernet i aquest
 no te nombre reservat pel tipus, defineix la forma en què les dades són transferides
 sobre el medi físic, proporcionant servei a les capes superiors.
+\begin{figure}[h!]
+\centering
+\begin{bytefield}[bitwidth=1em, bitheight = 2.5em]{32}
+  \bithead{5}{7 bytes} &
+  \bithead{3}{1 byte}
+  \bithead{4}{6 bytes}
+  \bithead{4}{6 bytes}
+  \bithead{5}{2 bytes}
+  \bithead{8}{46 a 1500 bytes}
+  \bithead{3}{4 bytes} \\
+  \bitbox{5}{Preàmbul} &
+  \bitbox{3}{SFD} 
+  \bitbox{4}{Dir. destí} &
+  \bitbox{4}{Dir. Origen} &
+  \bitbox{5}{Llargada}
+  \bitbox{8}{Dades + farcit}
+  \bitbox{3}{FCS}\\
+
+\end{bytefield}
+\caption{Estructura LLC}
+\end{figure}
 \end{itemize}
 \subsection{Equips amb adreçament IPX i IPv4}
 Per aquesta secció, s'ha mirat manualment els equips que utilitzen IPX 
@@ -239,34 +345,21 @@ ff02:1:ff00:0/104, donat que s'utiitza pel mateix protocol. Si es desitja, es po
 veure a l'annex la resta de les dades, a la taula \ref{mult:104}
 \begin{table}[!h]
 \centering
-\begin{tabular}{|C{4cm}|C{4cm}|}
-\hline
+\begin{tabular}{cc}
 Adreces multicast &Protocols\\
 \hline
 03:00:00:00:00:01 &BROWSER\\
-\hline
 224.0.0.1 &BJNP, ICMP, IGMPv2\\
-\hline
 224.0.0.251 &IGMPv2, IPv4, MDNS\\
-\hline
 224.0.0.252 &LLMNR\\
-\hline
 ff02::1 &ICMPv6, IPv6\\
-\hline
 ff02::16 &ICMPv6\\
-\hline
 ff02::1:2 &DHCPv6\\
-\hline
 ff02::1:3 &LLMNR\\
-\hline
 ff02::1:ff00:0/104 &ICMPv6\\
-\hline
 ff02::2 &ICMPv6\\
-\hline
 ff02::c &SSDP, UDP\\
-\hline
 ff02::fb &MDNS\\
-\hline
 \end{tabular}
 \caption{Diferents adreces multicast i els seus protocols}
 \label{mult}
@@ -281,6 +374,12 @@ que els ordinadors puguin autodescobrir les impressores connectades a una xarxa.
 \item ICMP: informa de l'estat i situacons d'error en el funcionament de la xarxa. Amb
 exepció de l'aplicació Ping, aquest protocol no s'utilitza directament sobre les
 aplicacions d'usuari.
+\begin{figure}[!h]
+\centering
+
+\caption{Estructura BROWSER}
+\label{frm:brw}
+\end{figure}\\
 \item IGMPv2: protocol que permet establir grups de multicast en una xarxa d'IPv4.
 \item IPv4: protocol que permet identificar inequívocament un dispositiu lògic 
 connectat a la xarxa, per així poder connectar nodes.
@@ -310,20 +409,14 @@ Per a dur a terme aquesta gràfica, s'ha extret les dades de
 extreure l'informació de la taula \ref{graph:tab}\\
 \begin{table}[!h]
 \centering
-\begin{tabular}{|C{2cm}|C{2cm}|C{2cm}|}
-\hline 
+\begin{tabular}{ccc}
 Protocol & Nombre de paquets &Percentatge de paquets\\
 \hline
 LLC &97 &0.6\%\\
-\hline
 IPX &91 &0.6\%\\
-\hline
 IPv6 &550 &3.5\%\\
-\hline
 IPv4 &5616 &35.5\%\\
-\hline
 ARP &9451 &59.8\%\\
-\hline
 \end{tabular}
 \caption{Taula de protocols de nivell 3}
 \label{graph:tab}
@@ -384,35 +477,29 @@ la eina \textit{Statistics $>$ Conversations $>$ TCP}. Amb la informació obting
 s'ha elaborat la taula \ref{tcp:failed}.\\\\
 \begin{table}[!h]
 \centering
-\begin{tabular}{|C{2cm}|C{1.5cm}|C{2cm}|C{1cm}|C{3cm}|}
-\hline
+\begin{tabular}{ccccC{3cm}}
 IP origen  &Port Origen  &IP Destí  &Port Destí  &Motiu Fallida
 \\
 \hline
 172.16.0.112  &34640  &10.35.12.34  &1759  &No hi ha hagut 
 resposta per part del destí al SYN
 \\
-\hline
 172.16.0.112  &60158  &10.50.54.87  &9876  &No hi ha hagut
  resposta per part del destí al SYN
 \\
-\hline
 172.16.0.102  &43384  &172.0.16.111  &1759  &No hi ha hagut 
 resposta per part del destí al SYN
 \\
-\hline
 84.88.27.7  &80  &172.16.0.113  &42901  &S'ha rebut un paquet amb el flag RST
 \\
-\hline
 172.16.0.109  &33764  &172.16.0.113  &80  &S'ha rebut un paquet amb el flag RST
 \\
-\hline
 172.16.0.105  &44730  &172.16.0.122  &80  &S'ha rebut un paquet amb el flag RST
 \\
-\hline
+
 172.16.0.106  &42542  &172.16.0.118  &6591  &S'ha rebut un paquet amb el flag RST
 \\
-\hline
+
 \end{tabular}
 \caption{Connexions TCP fallides}
 \label{tcp:failed}
@@ -441,36 +528,22 @@ en HTTPS és la que té per IP origen i destí els valors 172.16.0.112 i
 en haver-se esmentat ja els valors.
 \begin{table}[!h]
 \centering
-\begin{tabular}{|c|c|}
-\hline
+\begin{tabular}{cc}
 IP origen &IP destí\\
 \hline
 172.16.0.109 &10.69.4.176\\
-\hline
 172.16.0.109 &91.195.125.127\\
-\hline
 172.16.0.109 &147.91.204.28\\
-\hline
-172.16.0.109 &13.219.28.2\\
-\hline
+172.16.0.109 &193.219.28.2\\
 172.16.0.109 &94.75.223.121\\
-\hline
 172.16.0.109 &129.177.13.120\\
-\hline
 172.16.0.109 &5.135.162.176\\
-\hline
 172.16.0.109 &178.33.193.139\\
-\hline
 172.16.0.109 &91.210.88.42\\
-\hline
 172.16.0.109 &217.31.202.63\\
-\hline
 172.16.0.112 &209.132.181.16\\
-\hline
 172.16.0.112 &213.175.193.206\\
-\hline
-172.16.0.112 &84.88.27.7\\
-\hline
+172.16.0.113 &84.88.27.7\\
 \end{tabular}
 \caption{Conversacions completes en HTTP i HTTPS}
 \label{tcp:http}
@@ -494,25 +567,25 @@ mínima de les capçaleres TCP i IP (20 bytes cada una).\\
 \hline
 IP &Port &MTU &Finestra inicial &IP &Port &MTU &Finestra inicial\\
 \hline
-172.16.0.102 &48009 &1500 &14600 &172.16.0.105 &9642 &1500 &14480\\
+172.16.0.102 &48009 &1500 &1868800 &172.16.0.105 &9642 &1500 &1853440\\
 \hline
-172.16.0.104 &36664 &1500 &14600 &172.16.0.111 &1759 &1500 &14480\\
+172.16.0.104 &36664 &1500 &1868800 &172.16.0.111 &1759 &1500 &1853440\\
 \hline
-172.16.0.104 &45737 &1500 &14600 &172.16.0.125 &22 &1500 &14480\\
+172.16.0.104 &45737 &1500 &1868800 &172.16.0.125 &22 &1500 &1853440\\
 \hline
-172.16.0.105 &52193 &1500 &14600 &172.16.0.108 &7856 &1500 &14480\\
+172.16.0.105 &52193 &1500 &1868800 &172.16.0.108 &7856 &1500 &1853440\\
 \hline
-172.16.0.106 &45874 &1500 &14600 &172.16.0.112 &22 &1500 &14480\\
+172.16.0.106 &45874 &1500 &1868800 &172.16.0.112 &22 &1500 &1853440\\
 \hline
-172.16.0.106 &52180 &1500 &14600 &172.16.0.108 &7856 &1500 &14480\\
+172.16.0.106 &52180 &1500 &1868800 &172.16.0.108 &7856 &1500 &1853440\\
 \hline
-172.16.0.106 &50316 &1500 &14600 &172.16.0.103 &21 &1500 &14480\\
+172.16.0.106 &50316 &1500 &1868800 &172.16.0.103 &21 &1500 &1853440\\
 \hline
-172.16.0.106 &38368 &1500 &14600 &172.16.0.115 &7658 &1500 &14480\\
+172.16.0.106 &38368 &1500 &1868800 &172.16.0.115 &7658 &1500 &1853440\\
 \hline
-172.16.0.109 &49608 &1500 &14600 &172.16.0.108 &7856 &1500 &14480\\
+172.16.0.109 &49608 &1500 &1868800 &172.16.0.108 &7856 &1500 &1853440\\
 \hline
-172.16.0.112 &42095 &1500 &14600 &172.16.0.102 &21 &1500 &14480\\
+172.16.0.112 &42095 &1500 &1868800 &172.16.0.102 &21 &1500 &1853440\\
 \hline
 \end{tabular}
 \caption{Conversacions completes no pertanyens a HTTP i HTTPS}
@@ -654,7 +727,8 @@ Connexió &\multicolumn{3}{c}{172.16.0.109} &\multicolumn{3}{c}{172.16.0.108}\\
 \hline
 Inici &\multicolumn{2}{c}{8264} &\multicolumn{2}{c}{8265} &\multicolumn{2}{c}{8266}\\
 \hline
-Tancament &\multicolumn{2}{c}{8348} &\multicolumn{2}{c}{8350} &\multicolumn{2}{c}{8351}\\
+Tancament &\multicolumn{2}{c}{8348} &\multicolumn{2}{c}{8350} 
+&\multicolumn{2}{c}{8351}\\
 \hline
 Nombre bytes &\multicolumn{3}{c}{44k} &\multicolumn{3}{c}{1772}\\
 \hline
@@ -687,7 +761,8 @@ Connexió &\multicolumn{3}{c}{172.16.0.105} &\multicolumn{3}{c}{172.16.0.108}\\
 \hline
 Inici &\multicolumn{2}{c}{1302} &\multicolumn{2}{c}{1303} &\multicolumn{2}{c}{1304}\\
 \hline
-Tancament &\multicolumn{2}{c}{1383} &\multicolumn{2}{c}{1393} &\multicolumn{2}{c}{1394}\\
+Tancament &\multicolumn{2}{c}{1383} &\multicolumn{2}{c}{1393} 
+&\multicolumn{2}{c}{1394}\\
 \hline
 Nombre bytes &\multicolumn{3}{c}{40k} &\multicolumn{3}{c}{1616}\\
 \hline
@@ -721,6 +796,11 @@ de paquets per les capçaleres bàsiques d'IP, Ethernet i TCP, és a dir, 54 Byt
 Amb la informació de la quantitat de dades i la duració, s'ha calculat els
 Bits per segon nets. Per a facilitar la correcció, s'ha afegit una
 fila dedicada al nombre de paquets.\\\\
+Cal dir, que el resultat podria tenir un error donat la capçalera variable de
+TCP, UDP i Ethernet (pot tenir bytes per emplenar i tenir la trama mínima), pel
+que podria presentar un resultat tot i que aproximat no real. S'ha intentat fer
+un script en Lua per a calcular-ho, sense èxit, pel que es va procedir a utilitzar
+el mètode ja explicat.
 Per les opcions que s'han mostrat, s'explicarà la seva utilitzat:
 \begin{itemize}
 \item \textit{\textbf{M}aximum \textbf{S}egment \textbf{S}ize} (MSM), expressa
@@ -758,51 +838,42 @@ i en la figura \ref{grp:traffic} es pot veure el resultat.
 \label{grp:traffic}
 \end{figure}
 \section{Conclusions}
+Aquesta pràctica ha permès assimilar els conceptes que s'han ensenyat
+al llarg de la assignatura de xarxes, arribant a coneixements més enllà
+dels ensenyats en alguns casos, aprenent a utilitzar una eina tan potent
+com el Wireshark, havent fet una presa de contacte amb el llenguatde Lua,
+tot i que al final no s'ha requerit en cap dels apartats, i, finalment, arribar
+a entendre en un pas més abstracte i real com funciona internament una xarxa
+en producció.\\
+\\
+En resum, aquesta pràctica ha estat una experiència positiva per al desenvolupament
+personal com a informàtic.
+\newpage
 \section{Annex}
 \begin{table}[!h]
 \centering
-\begin{tabular}{|C{4cm}|}
-\hline
+\begin{tabular}{c}
 Adreces multicast\\
 \hline
 ff02::1:ff16:f8e9\\
-\hline
 ff02::1:ff3a:5c61\\
-\hline
 ff02::1:ff4e:9436\\
-\hline
 ff02::1:ff52:275\\
-\hline
 ff02::1:ff5f:1802\\
-\hline
 ff02::1:ff62:ce40\\
-\hline
 ff02::1:ff74:9938\\
-\hline
 ff02::1:ff84:f581\\
-\hline
 ff02::1:ff90:170b\\
-\hline
 ff02::1:ff92:210f\\
-\hline
 ff02::1:ff9e:c17f\\
-\hline
 ff02::1:ffac:b684\\
-\hline
 ff02::1:ffb5:ecdb\\
-\hline
 ff02::1:ffbf:a6df\\
-\hline
 ff02::1:ffc8:6083\\
-\hline
 ff02::1:ffca:c1b3\\
-\hline
 ff02::1:ffdb:187\\
-\hline
 ff02::1:ffe1:112f\\
-\hline
 ff02::1:ffeb:4add\\
-\hline
 \end{tabular}
 \caption{Adreces multicast de format ff02::1:ff00:0/104}
 \label{mult:104}

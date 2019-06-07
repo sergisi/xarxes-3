@@ -1,14 +1,14 @@
-\contentsline {table}{\numberline {1}{\ignorespaces Adreces MAC i IPX d'equips que utilitzen IPX}}{3}{table.1}
-\contentsline {table}{\numberline {2}{\ignorespaces Taula de adreces IPX que han utilitat protocol IPv4 i ha sigut captat.}}{3}{table.2}
-\contentsline {table}{\numberline {3}{\ignorespaces Taula d'adreces IPv6 i IPv4 d'un mateix node.}}{4}{table.3}
-\contentsline {table}{\numberline {4}{\ignorespaces Diferents adreces multicast i els seus protocols}}{4}{table.4}
-\contentsline {table}{\numberline {5}{\ignorespaces Taula de protocols de nivell 3}}{6}{table.5}
-\contentsline {table}{\numberline {6}{\ignorespaces Connexions TCP fallides}}{8}{table.6}
-\contentsline {table}{\numberline {7}{\ignorespaces Conversacions completes en HTTP i HTTPS}}{9}{table.7}
-\contentsline {table}{\numberline {8}{\ignorespaces Conversacions completes no pertanyens a HTTP i HTTPS}}{9}{table.8}
-\contentsline {table}{\numberline {9}{\ignorespaces Connexions TCP fallides}}{10}{table.9}
-\contentsline {table}{\numberline {10}{\ignorespaces Connexions UDP dutes a terme}}{10}{table.10}
-\contentsline {table}{\numberline {11}{\ignorespaces Connexions TCP a analitzar}}{11}{table.11}
-\contentsline {table}{\numberline {12}{\ignorespaces Primer an\IeC {\`a}lisi de connexi\IeC {\'o} TCP}}{11}{table.12}
-\contentsline {table}{\numberline {13}{\ignorespaces Segon an\IeC {\`a}lisi de connexi\IeC {\'o} TCP}}{12}{table.13}
-\contentsline {table}{\numberline {14}{\ignorespaces Adreces multicast de format ff02::1:ff00:0/104}}{13}{table.14}
+\contentsline {table}{\numberline {1}{\ignorespaces Adreces MAC i IPX d'equips que utilitzen IPX}}{5}{table.1}
+\contentsline {table}{\numberline {2}{\ignorespaces Taula de adreces IPX que han utilitat protocol IPv4 i ha sigut captat.}}{5}{table.2}
+\contentsline {table}{\numberline {3}{\ignorespaces Taula d'adreces IPv6 i IPv4 d'un mateix node.}}{6}{table.3}
+\contentsline {table}{\numberline {4}{\ignorespaces Diferents adreces multicast i els seus protocols}}{6}{table.4}
+\contentsline {table}{\numberline {5}{\ignorespaces Taula de protocols de nivell 3}}{8}{table.5}
+\contentsline {table}{\numberline {6}{\ignorespaces Connexions TCP fallides}}{10}{table.6}
+\contentsline {table}{\numberline {7}{\ignorespaces Conversacions completes en HTTP i HTTPS}}{10}{table.7}
+\contentsline {table}{\numberline {8}{\ignorespaces Conversacions completes no pertanyens a HTTP i HTTPS}}{11}{table.8}
+\contentsline {table}{\numberline {9}{\ignorespaces Connexions TCP fallides}}{12}{table.9}
+\contentsline {table}{\numberline {10}{\ignorespaces Connexions UDP dutes a terme}}{12}{table.10}
+\contentsline {table}{\numberline {11}{\ignorespaces Connexions TCP a analitzar}}{13}{table.11}
+\contentsline {table}{\numberline {12}{\ignorespaces Primer an\IeC {\`a}lisi de connexi\IeC {\'o} TCP}}{13}{table.12}
+\contentsline {table}{\numberline {13}{\ignorespaces Segon an\IeC {\`a}lisi de connexi\IeC {\'o} TCP}}{14}{table.13}
+\contentsline {table}{\numberline {14}{\ignorespaces Adreces multicast de format ff02::1:ff00:0/104}}{16}{table.14}
