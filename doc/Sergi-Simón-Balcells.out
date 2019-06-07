@@ -6,21 +6,18 @@
 \BOOKMARK [2][-]{subsection.2.4}{Porta d'enlla\347}{section.2}% 6
 \BOOKMARK [1][-]{section.3}{An\340lisi de nivell de enlla\347 i xarxa}{}% 7
 \BOOKMARK [2][-]{subsection.3.1}{Protocols encapsulats en les trames de nivell 2}{section.3}% 8
-\BOOKMARK [3][-]{subsubsection.3.1.1}{Ethernet II}{subsection.3.1}% 9
-\BOOKMARK [3][-]{subsubsection.3.1.2}{IEEE 802.3 Ethernet}{subsection.3.1}% 10
-\BOOKMARK [2][-]{subsection.3.2}{Protocols encapsulats en trames de nivell 2}{section.3}% 11
-\BOOKMARK [2][-]{subsection.3.3}{Equips amb adre\347ament IPX i IPv4}{section.3}% 12
-\BOOKMARK [2][-]{subsection.3.4}{Adreces IPv4 dels nodes que envien paquests IPv6 a ff02::1}{section.3}% 13
-\BOOKMARK [2][-]{subsection.3.5}{Adreces Multicast}{section.3}% 14
-\BOOKMARK [2][-]{subsection.3.6}{Gr\340fica de distribuci\363 dels protocols de nivell 3}{section.3}% 15
-\BOOKMARK [1][-]{section.4}{An\340lisi nivell de transport}{}% 16
-\BOOKMARK [2][-]{subsection.4.1}{Connexions TCP no dutes a terme}{section.4}% 17
-\BOOKMARK [2][-]{subsection.4.2}{Connexions TCP completes}{section.4}% 18
-\BOOKMARK [3][-]{subsubsection.4.2.1}{HTTP i HTTPS}{subsection.4.2}% 19
-\BOOKMARK [3][-]{subsubsection.4.2.2}{Connexions no HTTP i HTTPS}{subsection.4.2}% 20
-\BOOKMARK [2][-]{subsection.4.3}{Connexions UDP no dutes a terme}{section.4}% 21
-\BOOKMARK [2][-]{subsection.4.4}{Connexions UDP dutes a terme}{section.4}% 22
-\BOOKMARK [2][-]{subsection.4.5}{An\340lisi connexions TCP}{section.4}% 23
-\BOOKMARK [2][-]{subsection.4.6}{Gr\340fica TCP i UDP}{section.4}% 24
-\BOOKMARK [1][-]{section.5}{Conclusions}{}% 25
-\BOOKMARK [1][-]{section.6}{Annex}{}% 26
+\BOOKMARK [2][-]{subsection.3.2}{Equips amb adre\347ament IPX i IPv4}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.3}{Adreces IPv4 dels nodes que envien paquests IPv6 a ff02::1}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.4}{Adreces Multicast}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.5}{Gr\340fica de distribuci\363 dels protocols de nivell 3}{section.3}% 12
+\BOOKMARK [1][-]{section.4}{An\340lisi nivell de transport}{}% 13
+\BOOKMARK [2][-]{subsection.4.1}{Connexions TCP no dutes a terme}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.2}{Connexions TCP completes}{section.4}% 15
+\BOOKMARK [3][-]{subsubsection.4.2.1}{HTTP i HTTPS}{subsection.4.2}% 16
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Connexions no HTTP i HTTPS}{subsection.4.2}% 17
+\BOOKMARK [2][-]{subsection.4.3}{Connexions UDP no dutes a terme}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.4}{Connexions UDP dutes a terme}{section.4}% 19
+\BOOKMARK [2][-]{subsection.4.5}{An\340lisi connexions TCP}{section.4}% 20
+\BOOKMARK [2][-]{subsection.4.6}{Gr\340fica TCP i UDP}{section.4}% 21
+\BOOKMARK [1][-]{section.5}{Conclusions}{}% 22
+\BOOKMARK [1][-]{section.6}{Annex}{}% 23

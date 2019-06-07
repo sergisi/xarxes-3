@@ -70,7 +70,16 @@
 \section{Introducció}
 En aquesta practica es realitzarà un anàlisi d'una trama 
 d'una xarxa en produció. Per a realitzar-ho s'utilitzarà
-l'analitzador de protocols de xarxa Wireshark.
+l'analitzador de protocols de xarxa Wireshark.\\
+\\
+Aquest treball s'ha subdividit en els tres apartats referents a l'enunciat 
+de la pràctica. El primer d'ells, les característiques de la xarxa, tractarà 
+sobre les dades inherents de la xarxa. La segona, analitzarà el nivell 
+d'enllaç, i la tercera, analitarà el nivell de transport.\\
+\\
+A més a més, s'han extret conclusions personals del desenvolupament d'aquest
+treball. Finalment, per a simplificar una part d'una taula, s'ha generat
+uns annexes.
 \section{Caractarístiques de la xarxa}
 % Anàlisi paquest agafar característiques
 \subsection{Tipus d'adreçament a la capa de xarxa}
@@ -107,17 +116,15 @@ En aquest camp s'especifíca que l'adreça és 172.16.20.1.
 \section{Anàlisi de nivell de enllaç i xarxa}
 \subsection{Protocols encapsulats en les trames de nivell 2}
 Al llarg de tota la trama, es poden veure 2 protocols de nivell 2 de
-xarxa, \textbf{Ethernet II} i \textbf{IEEE 802.3 Ethernet}. En les següents
-subseccions s'explicarà el tipus d'encapsulament d'aquests
-\subsubsection{Ethernet II}
-Aquest tipus de trama s'utilitza en l'àmbit general, i es pot trobar en la majoria
-de paquets de la captura. La seva estructura segueix la següent:\\
+xarxa, \textbf{Ethernet II} i \textbf{IEEE 802.3 Ethernet}. S'explicarà els 
+protocols diferents que es troben de nivell 2:
+\begin{itemize}
+\item Ethernet II: Aquest tipus de trama s'utilitza en l'àmbit general, 
+i es pot trobar en la majoria
+de paquets de la captura.\\
 % Taula amb l'estructura
-\subsubsection{IEEE 802.3 Ethernet}
-Aquesta classe s'utilitza en els protocols de LLC. La seva estructuar és la
-següent:
-% Taula amb l'estructura
-\subsection{Protocols encapsulats en trames de nivell 2}
+\item IEEE 802.3 Ethernet: aquesta classe s'utilitza en els protocols de LLC.
+\end{itemize}
 Per a trobar els diferents protocols utilitzats, s'utilitza la eina de
 \textit{Protocol Hierarchy}, accessible dins del menú d'estadístiques del
 Wireshark. En aquest menú, podem veure com és divideix els protocols segons els
@@ -129,7 +136,7 @@ s'explicaran a continuació, juntament amb el seu valor de tipus.\\
 \begin{itemize}
 \item ARP, amb valor 0x0806, s'encarrega de resoldre i mantenir de manera automàtoca
 la taula d'equivalències entre les adreces MAC i les adreces IP dels nodes o màquines
-que es comuniquen.
+que es comuniquen. La seva estructura es pot veure en \ref{frm:arp}
 \begin{figure}[h!]
 \centering
 \begin{bytefield}[bitwidth=1.7em ]{16}
@@ -154,7 +161,8 @@ que es comuniquen.
 \label{frm:arp}
 \end{figure}
 \item IPv4, amb valor 0x0800, és el protocol per excelència d'Internet. Serveix
-per a la identiciació i connexió de nodes.
+per a la identiciació i connexió de nodes. L'estructura d'IPv4 es pot veure en
+la figura \ref{frm:ipv4}
 \begin{figure}[!h]
 \centering
 \begin{bytefield}[bitwidth=1em]{32}
@@ -180,7 +188,7 @@ per a la identiciació i connexió de nodes.
 \item IPv6, amb valor 0x86dd, neix com a un protocol per a substituir IPv4, i
 treure els problemes que sorgeixen amb aquest, com és la falta d'adreces, seguretat i
 qualitat de servei. Moltes de les seves funcionalitats s'han portat enrere per al
-protocol de IPv4.
+protocol de IPv4. La seva estructura es pot veure en \ref{frm:ipv6}
 \begin{figure}[h!]
 \centering
 \begin{bytefield}[bitwidth=1em ]{32}
@@ -195,9 +203,11 @@ protocol de IPv4.
   \bitbox{32}{Adreça destí (fins 128 bits)}\\
 \end{bytefield}
 \caption{Estructura IPv6}
+\label{frm:ipv6}
 \end{figure}
 \item IPX, amb valor 0x8137, s'utilitza per a transmetre datagrames entre els
-diferents serviors i els programes de les estacions de treball.
+diferents serviors i els programes de les estacions de treball. L'estructura d'IPX
+és la figura \ref{frm:ipx}
 \begin{figure}[h!]
 \centering
 \begin{bytefield}[bitwidth=1em ]{32}
@@ -216,10 +226,12 @@ diferents serviors i els programes de les estacions de treball.
   \bitbox{16}{...}\\
 \end{bytefield}
 \caption{Estructura IPv6}
+\label{frm:ipx}
 \end{figure}
 \item LLC, sense valor donat que està encapsulat amb IEEE 802.3 Ethernet i aquest
 no te nombre reservat pel tipus, defineix la forma en què les dades són transferides
-sobre el medi físic, proporcionant servei a les capes superiors.
+sobre el medi físic, proporcionant servei a les capes superiors. Finalment, la seva
+estructura es pot veure en \ref{frm:llc}.
 \begin{figure}[h!]
 \centering
 \begin{bytefield}[bitwidth=1em, bitheight = 2.5em]{32}
@@ -237,9 +249,9 @@ sobre el medi físic, proporcionant servei a les capes superiors.
   \bitbox{5}{Llargada}
   \bitbox{8}{Dades + farcit}
   \bitbox{3}{FCS}\\
-
 \end{bytefield}
 \caption{Estructura LLC}
+\label{frm:llc}
 \end{figure}
 \end{itemize}
 \subsection{Equips amb adreçament IPX i IPv4}
@@ -252,7 +264,7 @@ l'adreça MAC per aquelles trobades amb l'anterior cerca:\\
 || eth.dst == 00:00:74:99:b5:0b) && ip
 \end{lstlisting}
 En la primera cerca dins dels paquests IPX s'ha trobat aquestes adreces i MAC,
-com es mostra en la taula \ref{ipx:mac}
+com es mostra en la taula \ref{ipx:mac}.
 \begin{table}[!h]
 \centering
 \begin{tabular}{|l|r|}
@@ -340,9 +352,9 @@ Per a trobar les diferents adreces multicast s'ha utilitzat el filtre:
 \begin{lstlisting}
 	eth.dst[0] & 1 and !eth.dst == ff:ff:ff:ff:ff:ff
 \end{lstlisting}
-Ha donat el resultat de la taula \ref{mult}. S'ha extret les adreces del tipus
+Ha donat el resultat de la taula \ref{mult}. S'ha simplificat les adreces del tipus
 ff02:1:ff00:0/104, donat que s'utiitza pel mateix protocol. Si es desitja, es pot
-veure a l'annex la resta de les dades, a la taula \ref{mult:104}
+veure a l'annex la resta de les dades, a la taula \ref{mult:104}.
 \begin{table}[!h]
 \centering
 \begin{tabular}{cc}
@@ -374,12 +386,6 @@ que els ordinadors puguin autodescobrir les impressores connectades a una xarxa.
 \item ICMP: informa de l'estat i situacons d'error en el funcionament de la xarxa. Amb
 exepció de l'aplicació Ping, aquest protocol no s'utilitza directament sobre les
 aplicacions d'usuari.
-\begin{figure}[!h]
-\centering
-
-\caption{Estructura BROWSER}
-\label{frm:brw}
-\end{figure}\\
 \item IGMPv2: protocol que permet establir grups de multicast en una xarxa d'IPv4.
 \item IPv4: protocol que permet identificar inequívocament un dispositiu lògic 
 connectat a la xarxa, per així poder connectar nodes.
@@ -505,7 +511,7 @@ resposta per part del destí al SYN
 \label{tcp:failed}
 \end{table}
 S'ha tingut en compte el temps de l'últim SYN enviat i 
-el temps de connexió gravat per a decidir s'ha realment 
+el temps de connexió gravat per a decidir si realment 
 s'havia perdut la connexió o el paquet de resposta no s'ha
 gravat en la sel·lecció de la trama.
 \subsection{Connexions TCP completes}
@@ -689,7 +695,7 @@ IP &Port &IP &Port\\
 
 \subsection{Anàlisi connexions TCP}
 En aquest anàlisi, es demana analitzar en quatre apartats les dues comunicacions
-amb més transferència de dades, excloient aqueels en http i en https. Per a 
+amb més transferència de dades, excloient aquelles en HTTP i en HTTPS. Per a 
 fer un filtre d'aquestes, s'utilitzà el ja esmentat en el subapartat de Connexions
 no HTTP i HTTPS.\\
 \\
@@ -732,13 +738,13 @@ Tancament &\multicolumn{2}{c}{8348} &\multicolumn{2}{c}{8350}
 \hline
 Nombre bytes &\multicolumn{3}{c}{44k} &\multicolumn{3}{c}{1772}\\
 \hline
-Nombre de paquets &\multicolumn{3}{c}{32} &\multicolumn{3}{c}{22}\\
-\hline
-Bytes d'usuari &\multicolumn{3}{c}{42k} &\multicolumn{3}{c}{548}\\
+%Nombre de paquets &\multicolumn{3}{c}{32} &\multicolumn{3}{c}{22}\\
+%\hline
+Bytes d'usuari &\multicolumn{3}{c}{41956} &\multicolumn{3}{c}{0}\\
 \hline
 Bits/s Brut &\multicolumn{3}{c}{1190k} &\multicolumn{3}{c}{47k}\\
 \hline
-Bits/s Net &\multicolumn{3}{c}{1143k} &\multicolumn{3}{c}{15769}\\
+Bits/s Net &\multicolumn{3}{c}{1133k} &\multicolumn{3}{c}{0}\\
 \hline
 \multirow{5}{*}{Opcions} &\multicolumn{6}{l}{MSM: 1460} \\
 &\multicolumn{6}{l}{SACK: permitted}\\
@@ -768,11 +774,11 @@ Nombre bytes &\multicolumn{3}{c}{40k} &\multicolumn{3}{c}{1616}\\
 \hline
 Nombre de paquets &\multicolumn{3}{c}{27} &\multicolumn{3}{c}{20}\\
 \hline
-Bytes d'usuari &\multicolumn{3}{c}{39k} &\multicolumn{3}{c}{536}\\
+Bytes d'usuari &\multicolumn{3}{c}{38459} &\multicolumn{3}{c}{0}\\
 \hline
 Bits/s Brut &\multicolumn{3}{c}{5383k} &\multicolumn{3}{c}{216k}\\
 \hline
-Bits/s Net &\multicolumn{3}{c}{5189k} &\multicolumn{3}{c}{7165}\\
+Bits/s Net &\multicolumn{3}{c}{5145k} &\multicolumn{3}{c}{0}\\
 \hline
 \multirow{5}{*}{Opcions} &\multicolumn{6}{l}{MSM: 1460} \\
 &\multicolumn{6}{l}{SACK: permitted}\\
@@ -786,21 +792,11 @@ Seqüència &\multicolumn{3}{c}{273017509} &\multicolumn{3}{c}{196424145}\\
 \caption{Segon anàlisi de connexió TCP}
 \label{ana:snd}
 \end{table}
-Per la informació inherent de les dades trobades, a més a més del fòrum
-oficial de Wireshark i la seva documentació, es va extreure d'informació
-que el bytes proporcionats eren amb total, és a dir, bruts, i la lletra
-"k" significa "Kilo" (no kibi), pel que el seu multiplicador és per 1000.\\
+Per a calcular les dades de bytes d'usuari i bits nets s'ha buscat paquet
+a paquet quin \textit{Payload} tenien, per a calcular realment aquests valors
+sense aproximacions. Per a calcular els valors nets, s'ha dividit aquesta quantitat,
+però en bits, i s'ha dividit per la durada de la comunicació.\\
 \\
-Amb aquesta informació, els camps Bytes d'usuari, s'ha calculat restant el nombre
-de paquets per les capçaleres bàsiques d'IP, Ethernet i TCP, és a dir, 54 Bytes.
-Amb la informació de la quantitat de dades i la duració, s'ha calculat els
-Bits per segon nets. Per a facilitar la correcció, s'ha afegit una
-fila dedicada al nombre de paquets.\\\\
-Cal dir, que el resultat podria tenir un error donat la capçalera variable de
-TCP, UDP i Ethernet (pot tenir bytes per emplenar i tenir la trama mínima), pel
-que podria presentar un resultat tot i que aproximat no real. S'ha intentat fer
-un script en Lua per a calcular-ho, sense èxit, pel que es va procedir a utilitzar
-el mètode ja explicat.
 Per les opcions que s'han mostrat, s'explicarà la seva utilitzat:
 \begin{itemize}
 \item \textit{\textbf{M}aximum \textbf{S}egment \textbf{S}ize} (MSM), expressa
@@ -841,13 +837,13 @@ i en la figura \ref{grp:traffic} es pot veure el resultat.
 Aquesta pràctica ha permès assimilar els conceptes que s'han ensenyat
 al llarg de la assignatura de xarxes, arribant a coneixements més enllà
 dels ensenyats en alguns casos, aprenent a utilitzar una eina tan potent
-com el Wireshark, havent fet una presa de contacte amb el llenguatde Lua,
+com el Wireshark, havent fet una presa de contacte amb el llenguatge de Lua,
 tot i que al final no s'ha requerit en cap dels apartats, i, finalment, arribar
 a entendre en un pas més abstracte i real com funciona internament una xarxa
 en producció.\\
 \\
 En resum, aquesta pràctica ha estat una experiència positiva per al desenvolupament
-personal com a informàtic.
+personal com a enginyer informàtic.
 \newpage
 \section{Annex}
 \begin{table}[!h]
